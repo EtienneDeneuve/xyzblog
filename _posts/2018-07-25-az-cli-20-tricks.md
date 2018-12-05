@@ -7,7 +7,7 @@ post_excerpt: ""
 layout: post
 permalink: >
   https://etienne.deneuve.xyz/2018/07/25/az-cli-20-tricks/
-published: false
+published: true
 post_date: 2018-07-02 12:35:17
 ---
 # Az CLI 2.0
