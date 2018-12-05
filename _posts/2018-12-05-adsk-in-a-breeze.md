@@ -1,12 +1,13 @@
 ---
 ID: 473
 post_title: >
-  How to install Azure Stack Dev kit in a breeze
+  How to install Azure Stack Dev kit in a
+  breeze
 author: etienne.deneuve
 post_excerpt: ""
 layout: post
 permalink: >
-  https://etienne.deneuve.xyz/2018/07/25/install-asdk-in-a-breeze/
+  https://etienne.deneuve.xyz/2018/12/05/adsk-in-a-breeze/
 published: true
 post_date: 2018-12-05 12:35:17
 ---
@@ -57,21 +58,21 @@ In a Shell Powershell as Administrator :
 
 ```powershell
 # Variables
-$Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
-$LocalPath = 'C:\AzureStack_Installer'
+$Uri = &#039;https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1&#039;
+$LocalPath = &#039;C:AzureStack_Installer&#039;
 # Create folder
 New-Item $LocalPath -Type directory
 # Enforce usage of TLSv1.2 to download from GitHub
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 # Download file
-Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
+Invoke-WebRequest $uri -OutFile ($LocalPath + &#039;&#039; + &#039;asdk-installer.ps1&#039;)
 cd $LocalPath
-.\asdk-installer.ps1
+.asdk-installer.ps1
 ```
 
 Follow "Prepare Environnement" 
 
-1. Browse to your "cloudbuilder.vhdx" from phase 1 (c:\CloudBuilder.vhdx), without ticking the Add Drivers (if your hardware is fully supported as a Dell ASDK Ready Node for example)
+1. Browse to your "cloudbuilder.vhdx" from phase 1 (c:CloudBuilder.vhdx), without ticking the Add Drivers (if your hardware is fully supported as a Dell ASDK Ready Node for example)
 1. Submit your administrator's credentials of the local machine.
 1. You can add a Computer Name for the Azure Stack, if you don't it will be generated. You must choose something different than AzureStack
 1. If you have a Dhcp, you don't need to add a Static Configuration, otherwise, add a static configuration instead (with DNS and Gateway)
@@ -86,10 +87,10 @@ Login in the Azure Stack, take care of the keyboard layout, by default it's a QW
 In a PowerShell Shell, as Administrator launch the ASDK deployment. (Not in a Powershell ISE)
 
 ```Powershell
-cd C:\CloudDeployment\Setup     
+cd C:CloudDeploymentSetup     
 $adminpass = Get-Credential Administrator  -Message "Please provide the password for Local Administrator"
 $aadcred = Get-Credential "svc_azure_stack_installer@yourazuread.onmicrosoft.com" -Message "Please provide the password for Azure AD"
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password `
+.InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password `
     -InfraAzureDirectoryTenantName "yourazuread.onmicrosoft.com" `
     -TimeServer "13.79.239.69"`
     -InfraAzureDirectoryTenantAdminCredential $aadcred`
@@ -101,28 +102,28 @@ $aadcred = Get-Credential "svc_azure_stack_installer@yourazuread.onmicrosoft.com
 
 Warning: This process take few hours (between 10 and 15)
 
-> You can change parameter in the script, but double check they are correct. If you have trouble, you may need to restart the whole process.
-> The nat parameters must be changed to reflect your network.
+&gt; You can change parameter in the script, but double check they are correct. If you have trouble, you may need to restart the whole process.
+&gt; The nat parameters must be changed to reflect your network.
 
 #### Phase 4
 
 After the process is complete, you have now a cool ASDK, with nothing in it. You need to deploy services as a Cloud Operator
 
-1. Login with azurestack\azurestackadmin on the ASDK host
-1. Get the path of your Windows Server 2016, mine is 'D:\ISO'
+1. Login with azurestackazurestackadmin on the ASDK host
+1. Get the path of your Windows Server 2016, mine is &#039;D:ISO&#039;
 1. Open a new Powershell as Administator :
 
 ```Powershell
 # Create directory on the root drive.
-New-Item -ItemType Directory -Force -Path "C:\ConfigASDK"
-Set-Location "C:\ConfigASDK"
+New-Item -ItemType Directory -Force -Path "C:ConfigASDK"
+Set-Location "C:ConfigASDK"
 
 # Download the ConfigASDK Script.
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-Webrequest http://bit.ly/configasdk -UseBasicParsing -OutFile ConfigASDK.ps1
 
-.\ConfigASDK.ps1 -azureDirectoryTenantName "yourazuread.onmicrosoft.com" -authenticationType AzureAD `
-    -downloadPath "D:\ASDKfiles" -ISOPath "D:\ISO\WS2016EVAL.iso" -azureStackAdminPwd 'Azure Stack Administrator password' `
+.ConfigASDK.ps1 -azureDirectoryTenantName "yourazuread.onmicrosoft.com" -authenticationType AzureAD `
+    -downloadPath "D:ASDKfiles" -ISOPath "D:ISOWS2016EVAL.iso" -azureStackAdminPwd 'Azure Stack Administrator password' `
     -VMpwd 'a new password' -azureAdUsername "svc_azure_stack_installer@yourazuread.onmicrosoft.com" -azureAdPwd 'Azure Ad password' `
     -registerASDK -useAzureCredsForRegistration -azureRegSubId "Id de la subscription Azure"
 ```
