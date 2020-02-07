@@ -16,9 +16,15 @@ post_date: 2020-02-07 16:00:00
 # IaC & Tests
 
 <!-- vscode-markdown-toc -->
-* 1. [Workstation preparation](#Workstationpreparation)
-  * 1.1. [Install Powershell and modules](#InstallPowershellandmodules)
-    * 1.1.1. [Powershell 6](#Powershell6)
+* 1. [Overview](#Overview)
+* 2. [Workstation preparation](#Workstationpreparation)
+	* 2.1. [Install Powershell and modules](#InstallPowershellandmodules)
+		* 2.1.1. [Powershell 6](#Powershell6)
+		* 2.1.2. [Modules](#Modules)
+	* 2.2. [Visual Studio Code](#VisualStudioCode)
+		* 2.2.1. [Extensions installation](#Extensionsinstallation)
+* 3. [Pester, Gherkin and testing](#PesterGherkinandtesting)
+* 4. [Let's play](#Letsplay)
 
 <!-- vscode-markdown-toc-config
 	numbering=true
@@ -26,8 +32,7 @@ post_date: 2020-02-07 16:00:00
 	/vscode-markdown-toc-config -->
 <!-- /vscode-markdown-toc -->
 
-## Overview
-
+##  1. <a name='Overview'></a>Overview
 
 I was looking for the easiest way to test Azure infrastructure.
 I take a look into great project like Molecule, Terratest and so on.
@@ -36,7 +41,7 @@ Even if they are very cool and powerful, I wanted to find something easier (or l
 I already use pester for testing purpose, so I manage to use pester for testing Azure infrastructure,
  using the Gherkin syntax and I'll show you, how you can do that.
 
-## Workstation preparation
+##  2. <a name='Workstationpreparation'></a>Workstation preparation
 
 I work on 3 kind of platform : macOs, Ubuntu and Windows 10, and my tests are working on all of them.
 
@@ -49,9 +54,9 @@ You will need to install :
    1. [Gherkin plugin](https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete)
    2. [PowerShell](https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell)
 
-### Install Powershell and modules
+###  2.1. <a name='InstallPowershellandmodules'></a>Install Powershell and modules
 
-#### Powershell 6
+####  2.1.1. <a name='Powershell6'></a>Powershell 6
 
 ##### Manual installation
 
@@ -84,9 +89,7 @@ On Windows, Chocolatey is working well:
 choco install pwsh
 ```
 
-
-
-#### Modules
+####  2.1.2. <a name='Modules'></a>Modules
 
 Installing module in PowerShell is quite easy. You only need to type the following :
 
@@ -100,11 +103,11 @@ Install-Module -Name Az -force
 
 > Some command may not be useful on your setup, but this way ensure that you have the latest version of each module
 
-### Visual Studio Code
+###  2.2. <a name='VisualStudioCode'></a>Visual Studio Code
 
 You can install Vs Code manually or by using a Package Manager using choco, snap or brew. I'll not detail this part.
 
-#### Extensions installation
+####  2.2.1. <a name='Extensionsinstallation'></a>Extensions installation
 
 To install the extension, you can use the GUI of Vs Code or the cmdline. For Gui, take a look at the doc [here](https://code.visualstudio.com/docs/editor/extension-gallery).
 
@@ -118,14 +121,16 @@ code --install-extension ms-vscode.powershell
 > on Linux and macOs, you'll need to add the following in your profile, adapt the path to Vs Code to yours :
 >
 > __bash__:
-> 
+>
 > ```bash
 > cat << EOF >> ~/.bash_profile
 > # Add Visual Studio Code (code)
 > export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 > EOF
 > ```
+
 > __zsh__:
+
 > ```
 > cat << EOF >> ~/.zsh_profile
 > # Add Visual Studio Code (code)
@@ -133,7 +138,7 @@ code --install-extension ms-vscode.powershell
 > EOF
 > ```
 
-## Pester, Gherkin and testing
+##  3. <a name='PesterGherkinandtesting'></a>Pester, Gherkin and testing
 
 First of all, you will need some detail on Pester, Gherkin and testing like I think they can be useful and easy as possible.
 
@@ -143,7 +148,7 @@ First of all, you will need some detail on Pester, Gherkin and testing like I th
 
 Fortunately, Pester support the Gherkin syntax using the `Invoke-Gherkin` cmdlet and do a bit of magic for us.
 
-## Let's play
+##  4. <a name='Letsplay'></a>Let's play
 
 We need to create our workspace, so do it like that (Using PowerShell's Shell):
 
@@ -154,6 +159,7 @@ code ./Documents/GherkinTests
 ```
 
 Create few file :
+
 - etienne_exo.feature <-- This is the Gherkin File
 - etienne_exo.steps.ps1 <-- This is our magic
 
