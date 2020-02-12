@@ -5,7 +5,7 @@ author: etienne.deneuve
 post_excerpt: ""
 layout: post
 permalink: >
-  <https://etienne.deneuve.xyz/2020/02/07/infra-testing-easy-way/>
+  https://etienne.deneuve.xyz/2020/02/07/infra-testing-easy-way/
 published: true
 post_date: 2020-02-07 16:00:00
 ---
