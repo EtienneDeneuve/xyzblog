@@ -184,3 +184,24 @@ Then "we should be able to have at least one" {
   (Get-AzSubscription).Count | Should -Not -BeNullOrEmpty
 }
 ```
+
+Now, let's run that to check if the test are working or not :
+
+```PowerShell
+❯ Invoke-Gherkin
+Pester v4.10.0
+Executing all tests in '/home/etienne/Documents/GherkinTests'
+
+Feature: Validate Azure Deployment
+
+  Scenario: We should have some subscriptions to work
+    [+] Given we list the subscriptions using powershell 6.17s
+    [+] Then we should be able to have at least one 5.01s
+Tests completed in 11.39s
+Tests Passed: 2, Failed: 0, Skipped: 0, Pending: 0, Inconclusive: 0
+```
+
+Ok, tests are working, and we have something to show to customers/managment.
+
+> Wait, can't we do nothing better ? Are we lazy enough ?
+> Of course, not, let's wait for the next blog post.
