@@ -1,6 +1,4 @@
-<!-- markdownlint-disable MD000 -->
 ---
-
 ID: 498
 post_title: Testing your infra my easy way
 author: etienne.deneuve
@@ -11,8 +9,6 @@ permalink: >
 published: true
 post_date: 2020-02-07 16:00:00
 ---
-
-<!-- markdownlint-enable MD000 -->
 # IaC & Tests
 
 <!-- vscode-markdown-toc -->
