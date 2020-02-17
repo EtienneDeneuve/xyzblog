@@ -12,19 +12,33 @@ post_date: 2020-02-17 16:00:00
 
 # Execute test in Azure Devops
 
+<!-- vscode-markdown-toc -->
+
+* 1. [Azure Devops CLI](#AzureDevopsCLI)
+* 2. [Configure the repo locally](#Configuretherepolocally)
+* 3. [Create the pipeline](#Createthepipeline)
+* 4. [Create the Service Endpoint for Azure RM Subscription](#CreatetheServiceEndpointforAzureRMSubscription)
+* 5. [Configure the pipeline](#Configurethepipeline)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
 This is the next part of the follwing blog post : [
 Testing your infra my easy way
 ](https://etienne.deneuve.xyz/2020/02/07/infra-testing-easy-way/)
 
 In this part, you will learn how to :
 
-    - [x] Configure Azure Cli Devops
-    - [x] Create a Azure SPN
-    - [x] Create an Azure Pipeline using the Az Cli
-    - [x] Create a service endpoint for Azure Devops using the Az Cli
-    - [x] Create a Simple Pipeline to execute Gherkin test and publish the result into Azure Devops.
+- [x] Configure Azure Cli Devops
+- [x] Create a Azure SPN
+- [x] Create an Azure Pipeline using the Az Cli
+- [x] Create a service endpoint for Azure Devops using the Az Cli
+- [x] Create a Simple Pipeline to execute Gherkin test and publish the result into Azure Devops.
 
-## Azure Devops CLI
+##  1. <a name='AzureDevopsCLI'></a>Azure Devops CLI
 
 Get a Personal Access Token here : `https://dev.azure.com/<YourOrganisation>/_usersSettings/tokens`
 
@@ -41,7 +55,7 @@ az devops project create --name GherkinTest
 $repo=$(az repos list --project GherkinTest --query [].sshUrl -o tsv)
 ```
 
-## Configure the repo locally
+##  2. <a name='Configuretherepolocally'></a>Configure the repo locally
 
 ```Powershell
 cd ~/GherkinTest
@@ -52,7 +66,7 @@ git commit -m 'inital commit'
 git push origin master
 ```
 
-## Create the pipeline
+##  3. <a name='Createthepipeline'></a>Create the pipeline
 
 ```PowerShell
 az pipelines create --name "GherkinTest"
@@ -93,7 +107,7 @@ Successfully created a pipeline with Name: GherkinTest, Id: 25.
 }
 ```
 
-## Create the Service Endpoint for Azure RM Subscription
+##  4. <a name='CreatetheServiceEndpointforAzureRMSubscription'></a>Create the Service Endpoint for Azure RM Subscription
 
 First we need to create a SPN in Azure AD :
 
@@ -151,7 +165,7 @@ Confirm Azure RM service principal key: "Password"
 }
 ```
 
-## Configure the pipeline
+##  5. <a name='Configurethepipeline'></a>Configure the pipeline
 
 Now, checkout to the newly created branch :
 
