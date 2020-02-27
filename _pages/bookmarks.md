@@ -6,7 +6,7 @@ post_excerpt: ""
 layout: page
 permalink: https://etienne.deneuve.xyz/bookmarks/
 published: true
-post_date: 2016-01-17 13:29:41
+date: 2016-01-17 13:29:41
 ---
 Je suis sur les réseaux sociaux :
 <ul>

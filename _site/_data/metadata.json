@@ -1,0 +1,29 @@
+{
+  "title": "XYZ Blog",
+  "description": "<p class=\"page-section-text text-light\">Cloud, DevOps & more.</p><div><a class=\"btn btn-lg btn-outline-light\" href=\"https://github.com/planetoftheweb/seven\">Github Repo</a></div>'",
+  "url": "etienne.deneuve.xyz",
+  "feed": {
+    "summary": "My Eleventy blog",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "url": "https://etienne.deneuve.xyz/feed/feed.xml",
+    "id": "https://etienne.deneuve.xyz"
+  },
+  "author": {
+    "name": "Etienne Deneuve",
+    "bio": "Etienne Deneuve is a Cloud & DevOps geek. Also MVP Cloud & Datacenter Management",
+    "social": [
+      {
+        "name": "github",
+        "iconClass": "fab fa-github",
+        "url": "https://github.com/etiennedeneuve"
+      },
+      {
+        "name": "linkedin",
+        "iconClass": "fab fa-linkedin",
+        "url": "https://linkedin.com/in/etiennedeneuve"
+      },
+      { "name": "twitter", "iconClass": "fab fa-twitter", "url": "https://twitter.com/etiennedinfo" }
+    ]
+  }
+}

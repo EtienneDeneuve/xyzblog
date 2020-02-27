@@ -6,7 +6,7 @@ post_excerpt: ""
 layout: page
 permalink: https://etienne.deneuve.xyz/privacy/
 published: true
-post_date: 2018-06-23 19:28:42
+date: 2018-06-23 19:28:42
 ---
 <h2>Who we are</h2>
 Our website address is: https://etienne.deneuve.xyz.
