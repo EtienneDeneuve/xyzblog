@@ -8,8 +8,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Eleventy Action
-      uses: TartanLlama/actions-eleventy@v1.2
-      with:
-        args: --output _dist
-        install_dependencies: true
+      - uses: actions/checkout@master
+      - name: Build
+        uses: TartanLlama/actions-eleventy@v1.1
+        with:
+          args: --output _dist
+          install_dependencies: true
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v1.1.0
+        env:
+          PUBLISH_DIR: _site 
+          PUBLISH_BRANCH: gh-pages
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
