@@ -3,8 +3,8 @@ layout: layouts/post-sidebar.njk
 title: 'IaC & Tests'
 summary: "I was looking for the easiest way to test Azure infrastructure.
 I wanted to find something easier (or lazier)."
-hero: /images/posts/chromeextensions.png
-thumb: /images/posts/chromeextensions_tn.png
+# hero: /images/posts/chromeextensions.png
+# thumb: /images/posts/chromeextensions_tn.png
 sidebar: infra-test
 eleventyNavigation:
   key: seven-styles

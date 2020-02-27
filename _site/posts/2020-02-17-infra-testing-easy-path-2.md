@@ -2,8 +2,8 @@
 layout: layouts/post-sidebar.njk
 title: 'Testing your infra my easy way 2'
 summary: "Testing your infra shouldn't be hard. Try my easy way."
-hero: /images/posts/chromeextensions.png
-thumb: /images/posts/chromeextensions_tn.png
+# hero: /images/posts/chromeextensions.png
+# thumb: /images/posts/chromeextensions_tn.png
 sidebar: infra-test
 eleventyNavigation:
   key: seven-styles
