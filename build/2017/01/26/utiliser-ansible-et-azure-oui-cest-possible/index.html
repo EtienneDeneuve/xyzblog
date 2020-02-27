@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+
+    <title>XYZ Blog</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    
+
+    <script src="/js/script.js"></script>
+    </head>
+  <body class="position-relative" data-spy="scroll" data-target=".site-nav" data-offset="55">
+    <nav class="site-nav family-sans navbar navbar-expand-md navbar-dark  sidebar sticky-top  py-0">
+  <div class="container-fluid">
+    <button type="button" class="navbar-toggler my-2 my-md-0" data-toggle="collapse" data-target="#myTogglerNav" aria-controls="myTogglerNav" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-brand text-uppercase">
+      <a class="text-light" href="/"><i class="fas fa-cube mr-2"></i>XYZ Blog</a> 
+    </div>
+
+    <div class="collapse navbar-collapse text-center mt-0" id="myTogglerNav">
+      <div class="navbar-nav ml-auto font-weight-regular text-uppercase">
+        
+        <a class="d-none nav-item nav-link" href="#page-hero">hero target</a>
+        <a class="d-none nav-item nav-link" href="#main-content">nav target</a>
+        
+        <a class="nav-item nav-link font-weight-bold  text-light" href="/"><i class="fas fa-home"></i></a>
+        
+          <a class="nav-item nav-link" href="/courses/0/">courses</a>
+          
+          <a class="nav-item nav-link" href="/posts/0/">posts</a>
+          <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+
+
+
+          <a class="dropdown-item text-capitalize text-normal" href="/projects/seven/"><i class="fas fa-atom"></i> seven</a><a class="dropdown-item text-capitalize text-normal" href="/projects/rayveal/"><i class="fas fa-atom"></i> rayveal</a></div>
+        </div>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item text-capitalize" href="/about">About Me</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item text-capitalize" target="_blank" href="https://github.com/etiennedeneuve">
+            <i class="fab fa-github text-secondary mr-2"></i>github
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://linkedin.com/in/etiennedeneuve">
+            <i class="fab fa-linkedin text-secondary mr-2"></i>linkedin
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://twitter.com/etiennedinfo">
+            <i class="fab fa-twitter text-secondary mr-2"></i>twitter
+          </a></div>
+        </div>
+      </div>
+      <div class="searchbox pl-2 py-2">
+    <input
+      type="text"
+      v-model="query"
+      class="form-control text-white border m-auto"
+      :class="[isActive ? 'wide' : 'short']"
+      @focus="isActive=true"
+      @blur.prevent="handleBlur"
+      ref="searchinput"
+      style="background: transparent;"
+      aria-describedby="searchinput"
+      autocomplete="off"
+    >
+    <div v-if="query && isActive" class="position-absolute justify-content-center" style="top: 47px;">
+      <div class="card bg-secondary">
+        <ul class="list-group list-group-flush px-0" v-for="(item, index) in queried" :key="index">
+          <li class="list-group-item">
+            <a :href="item.url" class="d-flex text-secondary">
+              <span class="pr-2" v-html="item.icon"></span>
+              <span class="text-body text-left" v-html="item.title"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+    </div>
+  </div>
+</nav>
+
+      
+
+ 
+  <div class="post post-sidebar container-fluid">
+    <div class="row justify-content-xl-center">
+      <aside class="aside aside-main d-none d-md-block col-md-3 col-lg-2">
+        <nav class="sticky-top list-group list-group-flush text-right" id="collapseExample">
+
+          </nav>
+      </aside>
+
+
+      <main class="main col">
+      <h2>Avant Propos</h2>
+<a href="https://www.ansible.com/"><u>Ansible</u></a> est un outil d’orchestration et déploiment proposé par <a href="https://www.redhat.com/fr"><u>Red Hat</u></a>. Il est utilisé par de nombreuses entreprises dans le domaine de l’Open Source. Pendant la préparation des démos pour le <a href="https://mscloudsummit.fr/fr/accueil/"><u>MS Cloud Summit</u></a>, <a href="https://stanislas.io/"><u>Stanislas Quastana</u></a> et moi-même avons donc décidé de présenter les outils Open Source Terraform et Ansible afin de déployer des services dans Azure. Vous pouvez retrouver tous les détails de notre session “Infrastructures dans Azure : C’est comme du lego” : <a href="http://aka.ms/cloudsummitlego"><u>ici</u></a>
+<h2>Ansible</h2>
+Ansible est donc un outil de gestion des configurations, je ne vais pas vous refaire un tutorial d’installation vu le nombre déjà disponible avec votre ami <a href="https://www.bing.com/search?q=tutorial+installation+ansible&amp;go=Envoyer&amp;qs=n&amp;form=QBLH&amp;sp=-1&amp;pq=tutorial+installation+ansible&amp;sc=3-24&amp;sk=&amp;cvid=12AEAA43E790440088D942223E35173A"><u>Bing</u></a> ou <a href="https://www.google.fr/#q=tutorial+install+ansible"><u>Google</u></a>.
+<p>En revanche l’installation des éléments nécessaires pour Azure peuvent être un peu complexe à installer et les documentations peu présentes. J’ai décidé d’installer Ansible sur une machine dans Azure que j’ai déployé avec Terraform, vous pouvez trouver un fichier d’exemple dans mon repo Azure sur <a href="https://github.com/EtienneDeneuve/Azure/tree/master/Terraform/01%20-%20IaaS"><u>GitHub</u></a> afin de créer une machine virtuelle prête à l’emploi. Mon exemple déploie une machine Ubuntu 16.04-LTS et mon installation fonctionnera sur d’autres machines du même type.</p>
+<h3>Installation de dépendances</h3>
+Première chose à faire sur une nouvelle machine c’est bien entendu les mises à jour :
+<pre>sudo apt-get update</pre>
+Ensuite il faut installer les dépendances nécessaires a Ansible à savoir Phython :
+<pre>sudo apt-get install software-properties-common</pre>
+Il faut également installer des librairies de convention et ssl :
+<pre>sudo apt-get install libffi-dev libssl-dev</pre>
+<h3>Installation de Ansible</h3>
+Sur Ubuntu le repository PPA propose une version de Ansible il faut donc simplement l’ajouter et faire une petite mise à jour du cache apt-get:
+<pre>sudo apt-add-repository ppa:ansible/ansible
+ sudo apt-get update</pre>
+Lorsqu’on utilise Ansible ou d’autres outils de configuration management il est intéressant d’utiliser git ainsi que sshpass on installera donc les trois paquets :
+<pre>sudo apt-get install ansible sshpass git</pre>
+<h3>Installation des prérequis pour Azure</h3>
+Pour installer les éléments nécessaires, pip est assez pratique :
+<pre>sudo apt-get install python-pip
+ sudo pip install --upgrade pip 
+</pre>
+Le paquet urllib3 fourni dans les repository d’Ubuntu n’est pas installé de la bonne manière pour les dépendances Azure et donc il faut le mettre à jour par pip :
+<pre>sudo pip install urllib3 --upgrade</pre>
+Ensuite on installe MS rest …
+<pre>sudo pip install msrest==0.4.4</pre>
+et MS Rest Azure …
+<pre>sudo pip install msrestazure==0.4.4</pre>
+Puis le SDK Python pour Azure :
+<pre>sudo pip install azure==2.0.0rc5</pre>
+<h3>Configuration de Ansible (a minima)</h3>
+Première chose à faire comme toujours lorsqu’on modifie des fichiers sur un serveur c’est le backup du fichier de configuration :
+<pre>mv /etc/ansible/ansible.cfg /etc/ansible/ansible.cfg.backup
+</pre>
+J’ai glané sur le web quelques modifications à faire dans le fichier de configuration et on ajoute la machine locale dans le fichier hosts de Ansible :
+<pre>printf "[defaults]\nhost_key_checking = False\n\n" \ 
+        &gt;&gt; /etc/ansible/ansible.cfg 
+ echo '[ssh_connection]\ncontrol_path = ~/.ssh/ansible-%%h-%%r' \
+        &gt;&gt; /etc/ansible/ansible.cfg
+ echo "\nscp_if_ssh=True" &gt;&gt; /etc/ansible/ansible.cfg
+ echo "localhost" &gt; etc/ansible/hosts</pre>
+<h3>Azure !</h3>
+Pour tester que notre configuration fonctionne correctement on va utiliser un module disponible sur le GitHub de Ansible, azure_rm.py et son fichier de configuration azure_rm.ini. Mais avant, préparons quelques dossiers pour ranger les Playbook Ansible et les scripts d’inventaire.
+<pre>mkdir -p /opt/azure/playbook 
+mkdir -p /opt/azure/inventory
+mkdir -p ~/azure</pre>
+Il faut télécharger le module :
+<pre>cd /opt/azure/inventory
+wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
+wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.ini
+chmod +x /opt/azure/inventory/azure_rm.py</pre>
+Ansible a besoin tout comme Terraform d’un Service Principal sur votre tenant Azure afin de d’accéder à vos ressources, je ne vais détailler la méthode ici, rendez-vous sur le blog de <a href="https://stanislas.io/2017/01/02/modeliser-deployer-et-gerer-des-ressources-azure-avec-terraform-de-hashicorp/"><u>Stanislas</u></a> afin d’avoir la méthode qui est exactement la même. Une fois ces informations collectées, créer un fichier « .credentials » dans votre $Home/azure :
+<pre>cd ~ /azure/
+touch .credentials</pre>
+et renseigner le contenu tel que ci dessous :
+<pre>[default]
+subscription_id=YOUR-SUBID
+ client_id=YOUR-ClientID
+ secret=SECRET
+ tenant=TENANTID</pre>
+Attention : vous devez indiquer les renseignements sans placer de quote au quels cas Azure vous refusera l’authentification. Pensez également à ne jamais diffuser vos clés, elles permettent d’avoir accès à votre tenant de manière similaire a un administrateur !
+<h3>Le test !</h3>
+Pour vérifier que tout est bien configuré, nous allons créer un playbook basé sur les informations de l’inventaire que nous avons téléchargé. Avant de faire votre premier playbook il est peut-être nécessaire de faire un petit rappel sur les fichier YML ou YAML.
+<p>Les fichiers YML (Yet Another Language Markup) est un langage simple mais qui comporte quelques subtilités qui peuvent se révéler frustrantes au départ. En effet les tabulations doivent être de 2 espaces. J’utilise <a href="https://code.visualstudio.com/"><u>Visual Studio Code</u></a> qui comporte la possibilité d’être configuré afin de ne pas être ennuyé, de plus si vous travaillez sur un Pc sous Windows, les fichiers doivent être en retour de ligne LF et non CRLF! Je détaillerai très prochainement ma configuration et mes plugins que j’utilise sur VS Code.<br>
+Le playbook :</p>
+<pre> - name: Test the inventory script
+  hosts: azure
+  connection: local
+  gather_facts: no
+  tasks:
+    - debug: msg=" has powerstate "
+
+</pre>
+<p>On l’enregistre dans /opt/azure/playbook/test.yml puis on le lance avec la commande :</p>
+<p>[code language=bash]</p>
+<p>ansible-playbook -i <span class="pl-smi">/opt/azure/inventory/azure_rm.py <span class="pl-smi">/opt/azure/playbook/test.yml</span></span></p>
+<p>[/code]</p>
+<p>Vous obtiendrez normalement un retour de ce type :</p>
+<pre>PLAY [Test the inventory script] ***********************************************
+ 
+TASK [debug] *******************************************************************
+ok: [ansiblevm01] =&gt; {     
+    "msg": "ansiblevm01 has powerstate running"
+}
+ok: [RG-Terraform-Ansible-vm] =&gt; {      
+    "msg": "RG-Terraform-Ansible-vm has powerstate running"
+}
+ok: [Blog] =&gt; {       
+    "msg": "Blog has powerstate running"
+}
+ 
+PLAY RECAP *********************************************************************
+Blog                    : ok=1 changed=0 unreachable=0 failed=0
+RG-Terraform-Ansible-vm : ok=1 changed=0 unreachable=0 failed=0
+ansiblevm01             : ok=1 changed=0 unreachable=0 failed=0</pre>
+<p>Vous devez retrouver vos ressources groupes déjà présents dans votre tenant Azure !!</p>
+<p>Tout est donc prêt pour pouvoir déployer des ressources dans Azure et les configurer.</p>
+
+      </main>
+      <aside class="aside aside-supplemental d-none d-lg-block col-lg-2 col-xl-2" >
+        <nav class="sticky-top">
+        
+        </nav>
+      </aside>
+    </div>
+  </div>
+</div>
+
+    <footer class="site-footer bg-transparent pb-3 pb-md-5">
+      <div class="layout-social container d-flex justify-content-center">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</div>
+    </footer>
+  </body>
+
+</html>

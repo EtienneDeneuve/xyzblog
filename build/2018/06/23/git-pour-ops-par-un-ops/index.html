@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+
+    <title>XYZ Blog</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    
+
+    <script src="/js/script.js"></script>
+    </head>
+  <body class="position-relative" data-spy="scroll" data-target=".site-nav" data-offset="55">
+    <nav class="site-nav family-sans navbar navbar-expand-md navbar-dark  sidebar sticky-top  py-0">
+  <div class="container-fluid">
+    <button type="button" class="navbar-toggler my-2 my-md-0" data-toggle="collapse" data-target="#myTogglerNav" aria-controls="myTogglerNav" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-brand text-uppercase">
+      <a class="text-light" href="/"><i class="fas fa-cube mr-2"></i>XYZ Blog</a> 
+    </div>
+
+    <div class="collapse navbar-collapse text-center mt-0" id="myTogglerNav">
+      <div class="navbar-nav ml-auto font-weight-regular text-uppercase">
+        
+        <a class="d-none nav-item nav-link" href="#page-hero">hero target</a>
+        <a class="d-none nav-item nav-link" href="#main-content">nav target</a>
+        
+        <a class="nav-item nav-link font-weight-bold  text-light" href="/"><i class="fas fa-home"></i></a>
+        
+          <a class="nav-item nav-link" href="/courses/0/">courses</a>
+          
+          <a class="nav-item nav-link" href="/posts/0/">posts</a>
+          <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+
+
+
+          <a class="dropdown-item text-capitalize text-normal" href="/projects/seven/"><i class="fas fa-atom"></i> seven</a><a class="dropdown-item text-capitalize text-normal" href="/projects/rayveal/"><i class="fas fa-atom"></i> rayveal</a></div>
+        </div>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item text-capitalize" href="/about">About Me</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item text-capitalize" target="_blank" href="https://github.com/etiennedeneuve">
+            <i class="fab fa-github text-secondary mr-2"></i>github
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://linkedin.com/in/etiennedeneuve">
+            <i class="fab fa-linkedin text-secondary mr-2"></i>linkedin
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://twitter.com/etiennedinfo">
+            <i class="fab fa-twitter text-secondary mr-2"></i>twitter
+          </a></div>
+        </div>
+      </div>
+      <div class="searchbox pl-2 py-2">
+    <input
+      type="text"
+      v-model="query"
+      class="form-control text-white border m-auto"
+      :class="[isActive ? 'wide' : 'short']"
+      @focus="isActive=true"
+      @blur.prevent="handleBlur"
+      ref="searchinput"
+      style="background: transparent;"
+      aria-describedby="searchinput"
+      autocomplete="off"
+    >
+    <div v-if="query && isActive" class="position-absolute justify-content-center" style="top: 47px;">
+      <div class="card bg-secondary">
+        <ul class="list-group list-group-flush px-0" v-for="(item, index) in queried" :key="index">
+          <li class="list-group-item">
+            <a :href="item.url" class="d-flex text-secondary">
+              <span class="pr-2" v-html="item.icon"></span>
+              <span class="text-body text-left" v-html="item.title"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+    </div>
+  </div>
+</nav>
+
+      
+
+ 
+  <div class="post post-sidebar container-fluid">
+    <div class="row justify-content-xl-center">
+      <aside class="aside aside-main d-none d-md-block col-md-3 col-lg-2">
+        <nav class="sticky-top list-group list-group-flush text-right" id="collapseExample">
+
+          </nav>
+      </aside>
+
+
+      <main class="main col">
+      <p>Git est un logiciel de contrôle de code source déjà très utilisé dans le monde des dev. Lorsque l'on fait de l'Infra as Code, nous pouvons aussi utiliser git, je pense même que cela va devenir une vraie nécessité. Pour nous les Ops, ce n'est pas nécessairement naturel et j'ai donc décidé de démystifier git dans un contexte Cloud comme Azure.</p>
+<p>Afin de suivre ce billet, vous devez installer quelques outils sur votre poste de travail afin de pouvoir tester par vous-même.</p>
+<p>Je vous invite également à lire ces articles :</p>
+<ul>
+<li><a href="https://etienne.deneuve.xyz/2018/06/28/git-pour-les-ops-par-un-ops-le-retour/">Git for ops, le retour</a></li>
+<li><a href="https://etienne.deneuve.xyz/2018/06/26/setup-vs-code-bash-git/">Mon Setup de VS Code pour Bash et Git</a></li>
+<li><a href="https://etienne.deneuve.xyz/2017/10/01/microsoft-experience-17-infrastructure-code-modelisez-et-provisionnez-vos-services-azure-avec-terraform-et-packer">Terraform</a></li>
+<li><a href="https://etienne.deneuve.xyz/2017/10/09/vsts-for-ops-1/">Visual Studio Code</a></li>
+</ul>
+<h2 id="sur-le-poste-de-travail">Sur le poste de travail <a class="direct-link" href="#sur-le-poste-de-travail"> </a></h2>
+<p>Sur un poste Windows vous devez installer à minima :</p>
+<ul>
+<li>Visual Studio Code</li>
+<li>Git-SCM</li>
+</ul>
+<p>Vous pouvez utiliser chocolatey :</p>
+<script src="https://gist.github.com/EtienneDeneuve/5738b4f0aacac785c2a7f982f0346f5d.js"></script>
+<p>Sur macOs :</p>
+<ul>
+<li>Visual Studio Code</li>
+<li>git</li>
+</ul>
+<h2 id="un-serveur-git">Un serveur Git <a class="direct-link" href="#un-serveur-git"> </a></h2>
+<p>Vous pouvez utiliser <a href="https://go.microsoft.com/fwlink/?LinkId=307137">VSTS</a> ou <a href="https://github.com/">GitHub</a>.</p>
+<h3 id="repo-sur-github">Repo sur GitHub <a class="direct-link" href="#repo-sur-github"> </a></h3>
+<p>Une fois votre compte actif, créez un repository Git via le bouton vert &quot;Create Repository&quot;</p>
+<h3 id="repo-sur-vsts">Repo sur Vsts <a class="direct-link" href="#repo-sur-vsts"> </a></h3>
+<p>J'ai déjà publié un article concernant vsts<a href="https://etienne.deneuve.xyz/2017/10/09/vsts-for-ops-1/"> ici</a></p>
+<h3 id="git-en-ssh">Git en SSH <a class="direct-link" href="#git-en-ssh"> </a></h3>
+<p>Afin d'avoir accès à VSTS ou à GitHub depuis un bash Windows ou Linux, il faut générer une clé SSH :</p>
+<blockquote>
+<p>Je vous recommande vivement l'utilisation de bash pour git et la suite de cet article. Si vous n'avez pas encore installer bash sur votre Windows, installer le puis suivez cet article : <a href="https://etienne.deneuve.xyz/2018/06/26/setup-vs-code-bash-git/" target="_blank" rel="noopener">Open Source + Windows = Vs Code + Bash + Git</a></p>
+</blockquote>
+<pre><code>mkdir -p ~/.ssh
+ssh-keygen -f ~/.ssh/vsts
+cat vsts.pub
+</code></pre>
+<p>Ouvrez VSTS ou Git puis :</p>
+<p>VSTS : https://&lt;votreurl&gt;/_details/security/keys)&lt;/votreurl&gt;Git : <a href="https://github.com/settings/keys">https://github.com/settings/keys</a></p>
+<p>Cliquez sur &quot;Add&quot; et collez la clé publique.</p>
+<p>Ensuite ajoutez la clé dans l'agent ssh :</p>
+<pre><code>ssh-agent bash
+ssh-add ~/.ssh/vsts
+</code></pre>
+<h1 id="where-to-start-%3F">Where to start ? <a class="direct-link" href="#where-to-start-%3F"> </a></h1>
+<p>Lorsqu'on commence à travailler avec git, il est possible d'utiliser deux méthodes, soit on clone le repo distant, soit on ajoute le repo distant comme source.</p>
+<h2 id="clone-ou-remote-%3F">Clone ou Remote ? <a class="direct-link" href="#clone-ou-remote-%3F"> </a></h2>
+<p>Pour faire un clone ou ajouter un repository distant, il suffit de récupérer l'url disponible dans l'interface de GitHub ou de VSTS puis avec cette url :</p>
+<ul>
+<li>Clone</li>
+</ul>
+<pre><code>git clone https://xxxx/git.git
+# ou avec la belle cle ssh :
+git clone ssh://
+</code></pre>
+<p>&gt; Le clone est utilisable lorsque notre projet est vide, ou qu'il n'est pas encore present dans la machine de travail (reinstallation, pc fixe de la maison...)</p>
+<ul>
+<li>Remote</li>
+</ul>
+<p>Cette méthode est plus complexe et pas forcément nécessaire, il est juste intéressant de la connaitre.</p>
+<pre><code>git remote add origin url
+git commit . -m &quot;inital commit&quot;
+git push origin master
+git add --all
+git commit . -m &quot;add exisiting file in the remote repo&quot;
+git push origin master
+</code></pre>
+<blockquote>
+<p>Le remote est utilisable si le projet est déjà sur la machine et que le repository distant n'existe pas encore.<br>
+Je vous conseille de bien faire un premier commit &quot;vide&quot; puis d'ajouter les fichiers (git add --all) puis à nouveau d'envoyer les fichiers.</p>
+</blockquote>
+<h2 id="ajouter%2Fsupprimer-des-fichiers-%C3%A0-l'index">Ajouter/Supprimer des fichiers à l'index <a class="direct-link" href="#ajouter%2Fsupprimer-des-fichiers-%C3%A0-l'index"> </a></h2>
+<p>Avec Git, quand on créer un nouveau fichier, par défaut il n'est pas forcément ajouté à l'index, c'est à dire qu'il ne sera pas envoyé au server lors d'un <code>git push</code>.</p>
+<ul>
+<li>Ajout de fichiers</li>
+</ul>
+<pre><code>git add ./monchemin/monfichier
+# ou un dossier complet :
+git add ./mondossier/
+</code></pre>
+<blockquote>
+<p>Attention, git ne prendra jamais un dossier vide, il ne le prendra que si un fichier meme vide est present.</p>
+</blockquote>
+<ul>
+<li>Suppression de fichiers</li>
+</ul>
+<blockquote>
+<p><em>Je ne suis pas responsable de vos fichiers perdus ;)</em><br>
+Lorsqu'on supprime un fichier du repertoire local, il n'est pas supprimé de l'index de git sans faire la commande :</p>
+</blockquote>
+<pre><code>git rm ./monchemin/monfichier --cached
+</code></pre>
+<h2 id="commit">Commit <a class="direct-link" href="#commit"> </a></h2>
+<p>Afin d'ajouter nos fichier dans l'index en attente, il est nécessaire de valider ces fichiers, un peu comme en base de données Commit, Execute, Rollback, en cas de soucis.</p>
+<pre><code>git commit -m &amp;quot;le message du commit en fonction de votre travail... (pensez à vos collègues !&amp;quot;
+</code></pre>
+<h2 id="pull-ou-fetch-%3F">Pull ou Fetch ? <a class="direct-link" href="#pull-ou-fetch-%3F"> </a></h2>
+<p>Avant de valider ce <code>commit</code> sur le server, il est important de vérifier si on est bien raccord avec le canal &quot;upstream&quot;, c'est à dire le serveur distant.</p>
+<ul>
+<li>Pull</li>
+</ul>
+<pre><code>git pull
+</code></pre>
+<blockquote>
+<p>Git pull en réalité, c'est un <code>git fetch</code> puis un <code>git merge FETCH_HEAD</code>, pour gagner du temps.</p>
+</blockquote>
+<ul>
+<li>Fetch</li>
+</ul>
+<pre><code>git fetch
+</code></pre>
+<blockquote>
+<p>Git fetch permet de récupérer les commits distants qui on eu lieu de puis le dernier <code>fetch</code>. En effet, sans faire de <code>pull</code> ou de <code>fetch</code>, le server distant et local on des versions différentes des index (et donc des fichiers).</p>
+</blockquote>
+<h2 id="git-push">Git push <a class="direct-link" href="#git-push"> </a></h2>
+<p>Afin de partager votre travail avec vos collègues, vous devez envoyer vos modifications sur le server (si, si, si).<br>
+Il y a plusieurs façons de travailler avec git, mais lorsqu'on est dans une branche de travail (et pas de prod!) nous pouvons faire un push :</p>
+<pre><code>git push
+</code></pre>
+<h2 id="git-branch">Git branch <a class="direct-link" href="#git-branch"> </a></h2>
+<p>Avec git, l'idéal c'est de créer des branches pour le travail et pour la production.<br>
+J'ai beaucoup aimer la façon de gérer les branches que j'ai utilisé avec <a href="https://www.linkedin.com/in/yannick-neff-7754aa8/">Yannick Neff</a> et <a href="https://www.linkedin.com/in/maxencemaireaux/">Maxence Maireaux</a> sur l'<a href="github.com/societe-general/os-factory">Os Factory Open Source by Société Générale</a>.<br>
+En gros, on part du postulat qu'il y aura plusieurs versions du produit et donc dès le départ, on créer une branche v0 pour la version initial et on n'utilise pas la branch master (du tout). la v0 sera la version initiale de production du produit, en suite on créer des branches par feature request.</p>
+<ul>
+<li>la premiere branche :</li>
+</ul>
+<pre><code>git checkout -b v0
+</code></pre>
+<ul>
+<li>puis les autres :</li>
+</ul>
+<pre><code># support d&amp;#039;aws
+git checkout -b v0-aws
+# support d&amp;#039;azure
+git checkout -b v0-azure
+
+</code></pre>
+<p>Voilà, vous savez maintenant utiliser les bases de git, je vous invite à poursuivre avec <a href="https://etienne.deneuve.xyz/2018/06/26/setup-vs-code-bash-git/" target="_blank" rel="noopener">Open Source + Windows = VS Code + Bash + Git</a>.</p>
+
+      </main>
+      <aside class="aside aside-supplemental d-none d-lg-block col-lg-2 col-xl-2" >
+        <nav class="sticky-top">
+        <div class="">
+                <ol>
+                    
+                    <li><a href="#sur-le-poste-de-travail">Sur le poste de travail  </a>
+            		</li>
+
+                    <li><a href="#un-serveur-git">Un serveur Git  </a>
+            
+                <ol>
+                    
+                    <li><a href="#repo-sur-github">Repo sur GitHub  </a>
+            		</li>
+
+                    <li><a href="#repo-sur-vsts">Repo sur Vsts  </a>
+            		</li>
+
+                    <li><a href="#git-en-ssh">Git en SSH  </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#clone-ou-remote-%3F">Clone ou Remote ?  </a>
+            		</li>
+
+                    <li><a href="#ajouter%2Fsupprimer-des-fichiers-%C3%A0-l'index">Ajouter/Supprimer des fichiers à l'index  </a>
+            		</li>
+
+                    <li><a href="#commit">Commit  </a>
+            		</li>
+
+                    <li><a href="#pull-ou-fetch-%3F">Pull ou Fetch ?  </a>
+            		</li>
+
+                    <li><a href="#git-push">Git push  </a>
+            		</li>
+
+                    <li><a href="#git-branch">Git branch  </a>
+            		</li>
+                </ol>
+            </div>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</div>
+
+    <footer class="site-footer bg-transparent pb-3 pb-md-5">
+      <div class="layout-social container d-flex justify-content-center">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</div>
+    </footer>
+  </body>
+
+</html>

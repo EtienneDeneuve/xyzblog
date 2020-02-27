@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+
+    <title>XYZ Blog</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    
+
+    <script src="/js/script.js"></script>
+    </head>
+  <body class="position-relative" data-spy="scroll" data-target=".site-nav" data-offset="55">
+    <nav class="site-nav family-sans navbar navbar-expand-md navbar-dark  sidebar sticky-top  py-0">
+  <div class="container-fluid">
+    <button type="button" class="navbar-toggler my-2 my-md-0" data-toggle="collapse" data-target="#myTogglerNav" aria-controls="myTogglerNav" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-brand text-uppercase">
+      <a class="text-light" href="/"><i class="fas fa-cube mr-2"></i>XYZ Blog</a> 
+    </div>
+
+    <div class="collapse navbar-collapse text-center mt-0" id="myTogglerNav">
+      <div class="navbar-nav ml-auto font-weight-regular text-uppercase">
+        
+        <a class="d-none nav-item nav-link" href="#page-hero">hero target</a>
+        <a class="d-none nav-item nav-link" href="#main-content">nav target</a>
+        
+        <a class="nav-item nav-link font-weight-bold  text-light" href="/"><i class="fas fa-home"></i></a>
+        
+          <a class="nav-item nav-link" href="/courses/0/">courses</a>
+          
+          <a class="nav-item nav-link" href="/posts/0/">posts</a>
+          <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+
+
+
+          <a class="dropdown-item text-capitalize text-normal" href="/projects/seven/"><i class="fas fa-atom"></i> seven</a><a class="dropdown-item text-capitalize text-normal" href="/projects/rayveal/"><i class="fas fa-atom"></i> rayveal</a></div>
+        </div>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item text-capitalize" href="/about">About Me</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item text-capitalize" target="_blank" href="https://github.com/etiennedeneuve">
+            <i class="fab fa-github text-secondary mr-2"></i>github
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://linkedin.com/in/etiennedeneuve">
+            <i class="fab fa-linkedin text-secondary mr-2"></i>linkedin
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://twitter.com/etiennedinfo">
+            <i class="fab fa-twitter text-secondary mr-2"></i>twitter
+          </a></div>
+        </div>
+      </div>
+      <div class="searchbox pl-2 py-2">
+    <input
+      type="text"
+      v-model="query"
+      class="form-control text-white border m-auto"
+      :class="[isActive ? 'wide' : 'short']"
+      @focus="isActive=true"
+      @blur.prevent="handleBlur"
+      ref="searchinput"
+      style="background: transparent;"
+      aria-describedby="searchinput"
+      autocomplete="off"
+    >
+    <div v-if="query && isActive" class="position-absolute justify-content-center" style="top: 47px;">
+      <div class="card bg-secondary">
+        <ul class="list-group list-group-flush px-0" v-for="(item, index) in queried" :key="index">
+          <li class="list-group-item">
+            <a :href="item.url" class="d-flex text-secondary">
+              <span class="pr-2" v-html="item.icon"></span>
+              <span class="text-body text-left" v-html="item.title"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+    </div>
+  </div>
+</nav>
+
+      
+
+ 
+  <div class="post post-sidebar container-fluid">
+    <div class="row justify-content-xl-center">
+      <aside class="aside aside-main d-none d-md-block col-md-3 col-lg-2">
+        <nav class="sticky-top list-group list-group-flush text-right" id="collapseExample">
+
+          </nav>
+      </aside>
+
+
+      <main class="main col">
+      <p>Dans cet article, je vous détaille la partie (cachée) de ma démo lors de ma session au Microsoft Expérience 17 avec Stanislas Quastana. Le but de cet article est de créer notre première build ! Les prochains arriveront rapidement, avec dans l’idée, de vous aider à mieux appréhender le CI/CD en tant qu’OPS, pour des sujets qui nous concernent, l’infra as code.<br>
+Voici le chemin que nous allons suivre :</p>
+<ol>
+<li>Préparation de l’environnement</li>
+<li>Préparation d’une image de base Linux</li>
+<li>Préparation d’une image de base Windows [nous sommes ici]</li>
+<li>Utilisation des images de base pour les spécialiser, afin de les rendre “Immutables”</li>
+<li>Déploiement d’image en CI/CD avec Packer et Terraform depuis VSTS<br>
+Nous utiliserons des technologies Microsoft (VSTS, Azure, Windows Server…) mais aussi HashiCorp (Packer, Terraform) ainsi que des technologies Open Source (Linux..). Il n’est normalement pas nécessaire d’être, ni un maître du cloud, ni un demi dieu de l’infra as code pour suivre cette mini série de 4 articles.</li>
+</ol>
+<h1 id="introduction">Introduction <a class="direct-link" href="#introduction"> </a></h1>
+<p>Voici un petit récapitulatif ce qu'on aimerait :</p>
+<img class="alignnone size-full wp-image-365" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/Packer.png" alt="" width="1035" height="472" />
+<p>Vous devez créer deux comptes de stockage dans Azure vous même, un de &quot;Production&quot; et un &quot;Eval&quot; vous pouvez le faire avec Azure Cloud Shell depuis le portail Azure :</p>
+<pre><code>#create resource group
+az group create -l westeurope -n vstsforops
+#create storage account
+az storage account create -n sto0eval -g vstsforops -l westeurope --sku Standard_LRS
+az storage account create -n sto0prod -g vstsforops -lwesteurope --sku Standard_LRS
+</code></pre>
+<p>Du coup je vous ai déjà préparer les éléments histoire de ne pas perdre de temps sur la construction des templates packer. Récupérez l'archive ici : <a href="https://github.com/EtienneDeneuve/vsts-for-ops/archive/master.zip">   Download ZIP</a>, puis copiez les fichiers dans votre répertoire que vous avez cloné la fois dernière. J'ai fais quelques modifications sur la hiérarchie des dossiers afin que ça soit plus évolutif dans le temps, nous y reviendrons plus tard.</p>
+<p>Le fichier packer qui nous intéresse est dans le dossier /storage/windows/base/windows_base_packer.json, il est tout a fait standard, comme ceux que Stanislas détaille ici : <a href="https://github.com/squasta/PackerAzureRM">https://github.com/squasta/PackerAzureRM</a></p>
+<p>Vous noterez peut être que j'ai ajouté un provisionner &quot;windows-update&quot; :</p>
+<pre class="language-json"><code class="language-json"><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;provisioners&amp;quot;<span class="token operator">:</span> <span class="token punctuation">[</span></span><br><span class="highlight-line"><span class="token punctuation">{</span></span><br><span class="highlight-line">&amp;quot;type&amp;quot;<span class="token operator">:</span> &amp;quot;windows-update&amp;quot;</span><br><span class="highlight-line"><span class="token punctuation">}</span><span class="token punctuation">,</span></span><br><span class="highlight-line"></span></code></pre>
+<p>Celui n'est pas standard, vous devez le mettre dans le même répertoire que votre exécutable packer, il est téléchargeable à l'adresse suivante : <a href="https://github.com/rgl/packer-provisioner-windows-update/releases">https://github.com/rgl/packer-provisioner-windows-update/releases</a> mais je l'ai aussi inclus dans mon repository git au passage nous allons également mettre la dernière version de Packer. Ces actions sont à faire sur la machine &quot;Agent&quot; de <a href="https://etienne.deneuve.xyz/2017/10/09/vsts-for-ops-1/">vsts-for-ops-1</a> :</p>
+<pre><code>apt install unzip
+wget https://github.com/rgl/packer-provisioner-windows-update/releases/download/v0.4.0/packer-provisioner-windows-update-linux.tgz
+wget https://releases.hashicorp.com/packer/1.1.0/packer_1.1.0_linux_amd64.zip
+tar -xvf ./packer-provisioner-windows-update-linux.tgz
+unzip packer_1.1.0_linux_amd64.zip
+mv ./packer-provisioner-windows-update-windows /usr/local/bin/
+mv ./packer /usr/local/bin/
+</code></pre>
+<p>Si vous n'avez pas installé azure cli et l'agent, vous pouvez aussi utiliser ce script sur votre vm agent:</p>
+<p><a href="https://raw.githubusercontent.com/EtienneDeneuve/vsts-for-ops/master/scripts/platform/agent/prepare_vm.sh">https://raw.githubusercontent.com/EtienneDeneuve/vsts-for-ops/master/scripts/platform/agent/prepare_vm.sh</a></p>
+<h1 id="bon-et-la-build-%3F">Bon et La build ? <a class="direct-link" href="#bon-et-la-build-%3F"> </a></h1>
+<p>Ouvrez VSTS :</p>
+<p>puis cliquez sur &quot;build &amp; release&quot; :</p>
+<img class="alignnone size-full wp-image-372" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/Sans-titre.png" alt="" width="592" height="164" />
+<p>Puis sur &quot;+ New&quot;</p>
+<img class="alignnone size-full wp-image-361" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-1.png" alt="" width="1027" height="158" />
+<p>Puis sur &quot;Empty process&quot;</p>
+<img class="alignnone size-full wp-image-362" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-2.png" alt="" width="1035" height="185" />
+<p>Puis complétez le champs &quot;Name&quot; avec par exemple &quot;Packer-Base-Windows 2012 R2&quot;</p>
+<img class="alignnone size-full wp-image-363" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-3.png" alt="" width="1035" height="475" />
+<p>Dans la Phase 1 nous allons ajouter deux étape &quot;build immutable image&quot; et &quot;azure cli&quot; :</p>
+<img class="alignnone size-full wp-image-353" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-4.png" alt="" width="1035" height="504" />
+<p>Renseignez les variables telles que ci dessous :</p>
+<p>Packer Template : &quot;User Provided&quot;</p>
+<p>Packer template location, naviguer vers &quot;storage/Windows/base/windows_base_packer.json&quot;</p>
+<p>Dans le template parameters (je suis sympa, copiez collez ca :):</p>
+<pre class="language-json"><code class="language-json"><span class="highlight-line"></span><br><span class="highlight-line"><span class="token punctuation">{</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;client_id&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_CLIENT_ID)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;client_secret&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_CLIENT_SECRET)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;resource_group_name&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_RESOURCE_GROUP_NAME)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;storage_account&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_STORAGE_ACCOUNT)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;subscription_id&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_SUBSCRIPTION_ID)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;object_id&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_OBJECT_ID)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;tenant_id&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_TENANT_ID)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;windows_sku&amp;quot;<span class="token operator">:</span>&amp;quot;$(WINDOWS_SKU)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;build_resquestfor&amp;quot;<span class="token operator">:</span>&amp;quot;$(BUILD_REQUESTEDFOR)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;location&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_LOCATION)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;vm_size&amp;quot;<span class="token operator">:</span>&amp;quot;$(ARM_VM_SIZE)&amp;quot;<span class="token punctuation">,</span></span><br><span class="highlight-line"></span><br><span class="highlight-line">&amp;quot;capture_name&amp;quot;<span class="token operator">:</span>&amp;quot;$(CAPTURE_NAME)&amp;quot;</span><br><span class="highlight-line"></span><br><span class="highlight-line"><span class="token punctuation">}</span></span><br><span class="highlight-line"></span></code></pre>
+<p>Puis, dans &quot;Output&quot;, renseigner IMAGEURI :</p>
+<img class="alignnone size-full wp-image-354" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-5.png" alt="" width="1108" height="727" />
+<p>Ajoutez maintenant une tâche &quot;Azure CLI&quot; :</p>
+<img class="alignnone size-full wp-image-355" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-6.png" alt="" width="1035" height="560" />
+<p>Sélectionnez votre souscription azure (si elle n'est pas dans la liste, cliquez sur manage et ajoutez la) et indiquez le chemin vers le script bash &quot;script/platform/tasks/az-move-vhd.vhd&quot; et ajoutez les arguments &quot;-d &quot;$(DESTACCOUNTKEY)&quot; -s &quot;$(SOURCEACCOUNTKEY)&quot;&quot;</p>
+<img class="alignnone size-full wp-image-356" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-7.png" alt="" width="1109" height="648" />
+<p>Une fois que ces deux tâches sont complétées, nous allons déclarer nos variables (si vous ne savez pas comment les récupérées, suivez le guide sur le dépôt git de Stanislas plus haut) :</p>
+<img class="alignnone size-full wp-image-357" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-8.png" alt="" width="1112" height="893" />
+<p>Vous remarquerez que certaines sont masquées, rien de bien compliqué, cliquez sur le cadenas et elle sera &quot;protégée&quot; :</p>
+<img class="alignnone size-full wp-image-358" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/vsts-create-9.png" alt="" width="990" height="108" />
+<p>Dans l’idéal, les variables a protégées seraient : ARM_CLIENT_SECRET, ARM_SUBSCRIPTION_ID, ARM_TENANT_ID, DESTACCOUNTKEY, SOURCEACCOUNTKEY mais pour des questions de simplifications dans cet exercices, nous ne protégerons que les clés du compte de stockage, nous corrigerons par la suite.</p>
+<p>Pour récupérer les clés des comptes de stockage sélectionnez votre compte de stockage dans le resource group que vous avez créer et allez dans &quot;Access Keys&quot; :</p>
+<img class="alignnone size-full wp-image-360" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/storage-account-key.png" alt="" width="1108" height="557" />
+<p>Ensuite, comme nous allons construire des images Packer Windows, il y a des chances pour que la build dure plus d'une heure (Mise à jour etc) donc dans les options de la build nous allons passer le time out de la build a 240 minutes :</p>
+<img class="alignnone wp-image-378 size-full" src="https://etienne.deneuve.xyz/wp-content/uploads/2017/10/timeout-e1508918816983.png" alt="" width="1225" height="545" />
+<p>Cliquez maintenant sur &quot;Save &amp; Queue&quot;.</p>
+<p> </p>
+<p>Votre build est maintenant lancé.</p>
+<p>Dans le prochain article nous verrons en détail cette partie de &quot;build&quot; et surtout comprendre comment ça fonctionne (ou pas :))</p>
+<p> </p>
+<p> </p>
+
+      </main>
+      <aside class="aside aside-supplemental d-none d-lg-block col-lg-2 col-xl-2" >
+        <nav class="sticky-top">
+        
+        </nav>
+      </aside>
+    </div>
+  </div>
+</div>
+
+    <footer class="site-footer bg-transparent pb-3 pb-md-5">
+      <div class="layout-social container d-flex justify-content-center">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</div>
+    </footer>
+  </body>
+
+</html>

@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+
+    <title>XYZ Blog</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    
+
+    <script src="/js/script.js"></script>
+    </head>
+  <body class="position-relative" data-spy="scroll" data-target=".site-nav" data-offset="55">
+    <nav class="site-nav family-sans navbar navbar-expand-md navbar-dark  sidebar sticky-top  py-0">
+  <div class="container-fluid">
+    <button type="button" class="navbar-toggler my-2 my-md-0" data-toggle="collapse" data-target="#myTogglerNav" aria-controls="myTogglerNav" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-brand text-uppercase">
+      <a class="text-light" href="/"><i class="fas fa-cube mr-2"></i>XYZ Blog</a> 
+    </div>
+
+    <div class="collapse navbar-collapse text-center mt-0" id="myTogglerNav">
+      <div class="navbar-nav ml-auto font-weight-regular text-uppercase">
+        
+        <a class="d-none nav-item nav-link" href="#page-hero">hero target</a>
+        <a class="d-none nav-item nav-link" href="#main-content">nav target</a>
+        
+        <a class="nav-item nav-link font-weight-bold  text-light" href="/"><i class="fas fa-home"></i></a>
+        
+          <a class="nav-item nav-link" href="/courses/0/">courses</a>
+          
+          <a class="nav-item nav-link" href="/posts/0/">posts</a>
+          <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+
+
+
+          <a class="dropdown-item text-capitalize text-normal" href="/projects/seven/"><i class="fas fa-atom"></i> seven</a><a class="dropdown-item text-capitalize text-normal" href="/projects/rayveal/"><i class="fas fa-atom"></i> rayveal</a></div>
+        </div>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item text-capitalize" href="/about">About Me</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item text-capitalize" target="_blank" href="https://github.com/etiennedeneuve">
+            <i class="fab fa-github text-secondary mr-2"></i>github
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://linkedin.com/in/etiennedeneuve">
+            <i class="fab fa-linkedin text-secondary mr-2"></i>linkedin
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://twitter.com/etiennedinfo">
+            <i class="fab fa-twitter text-secondary mr-2"></i>twitter
+          </a></div>
+        </div>
+      </div>
+      <div class="searchbox pl-2 py-2">
+    <input
+      type="text"
+      v-model="query"
+      class="form-control text-white border m-auto"
+      :class="[isActive ? 'wide' : 'short']"
+      @focus="isActive=true"
+      @blur.prevent="handleBlur"
+      ref="searchinput"
+      style="background: transparent;"
+      aria-describedby="searchinput"
+      autocomplete="off"
+    >
+    <div v-if="query && isActive" class="position-absolute justify-content-center" style="top: 47px;">
+      <div class="card bg-secondary">
+        <ul class="list-group list-group-flush px-0" v-for="(item, index) in queried" :key="index">
+          <li class="list-group-item">
+            <a :href="item.url" class="d-flex text-secondary">
+              <span class="pr-2" v-html="item.icon"></span>
+              <span class="text-body text-left" v-html="item.title"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+    </div>
+  </div>
+</nav>
+
+      
+
+ 
+  <div class="post post-sidebar container-fluid">
+    <div class="row justify-content-xl-center">
+      <aside class="aside aside-main d-none d-md-block col-md-3 col-lg-2">
+        <nav class="sticky-top list-group list-group-flush text-right" id="collapseExample">
+
+          </nav>
+      </aside>
+
+
+      <main class="main col">
+      <h1 id="iac-%26-tests">IaC &amp; Tests <a class="direct-link" href="#iac-%26-tests"> </a></h1>
+<h2 id="overview">Overview <a class="direct-link" href="#overview"> </a></h2>
+<p>I was looking for the easiest way to test Azure infrastructure.<br>
+I take a look into great project like Molecule, Terratest and so on.<br>
+Even if they are very cool and powerful, I wanted to find something easier (or lazier).</p>
+<p>I already use pester for testing purpose, so I manage to use pester for testing Azure infrastructure,<br>
+using the Gherkin syntax and I'll show you, how you can do that.</p>
+<h2 id="workstation-preparation">Workstation preparation <a class="direct-link" href="#workstation-preparation"> </a></h2>
+<p>I work on 3 kind of platform : macOs, Ubuntu and Windows 10, and my tests are working on all of them.</p>
+<p>You will need to install :</p>
+<ol>
+<li>PowerShell (6.2.3 at least)
+<ol>
+<li>Powershell Az module</li>
+<li>Pester (at least 4.9)</li>
+</ol>
+</li>
+<li>VS Code
+<ol>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=alexkrechik.cucumberautocomplete">Gherkin plugin</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell">PowerShell</a></li>
+</ol>
+</li>
+</ol>
+<h3 id="install-powershell-and-modules">Install Powershell and modules <a class="direct-link" href="#install-powershell-and-modules"> </a></h3>
+<h4 id="powershell-6">Powershell 6 <a class="direct-link" href="#powershell-6"> </a></h4>
+<h5 id="manual-installation">Manual installation <a class="direct-link" href="#manual-installation"> </a></h5>
+<p>First, download the suitable version of powershell for your system on GitHub. Yes, if you miss it, that is now fully open source.<br>
+<a href="https://github.com/PowerShell/PowerShell/releases">https://github.com/PowerShell/PowerShell/releases</a></p>
+<h5 id="package-manager">Package Manager <a class="direct-link" href="#package-manager"> </a></h5>
+<h6 id="macos">macOS <a class="direct-link" href="#macos"> </a></h6>
+<p>If you use macOs, <a href="https://brew.sh/">brew</a> can manage it  for you:</p>
+<pre><code>brew install powershell
+</code></pre>
+<h6 id="ubuntu">Ubuntu <a class="direct-link" href="#ubuntu"> </a></h6>
+<p>On Ubuntu, snap can do the job also :</p>
+<pre><code>sudo snap install powershell --classic
+</code></pre>
+<h6 id="windows">Windows <a class="direct-link" href="#windows"> </a></h6>
+<p>On Windows, Chocolatey is working well:</p>
+<pre><code>choco install pwsh
+</code></pre>
+<h4 id="modules">Modules <a class="direct-link" href="#modules"> </a></h4>
+<p>Installing module in PowerShell is quite easy. You only need to type the following :</p>
+<pre><code>Install-PackageProvider Nuget -ForceBootstrap -Force
+Set-PSRepository -Name PSGallery -InstallationPolicy Trusted
+Update-Module
+Install-Module -Name Pester -Force -SkipPublisherCheck
+Install-Module -Name Az -force
+</code></pre>
+<blockquote>
+<p>Some command may not be useful on your setup, but this way ensure that you have the latest version of each module</p>
+</blockquote>
+<h3 id="visual-studio-code">Visual Studio Code <a class="direct-link" href="#visual-studio-code"> </a></h3>
+<p>You can install Vs Code manually or by using a Package Manager using choco, snap or brew. I'll not detail this part.</p>
+<h4 id="extensions-installation">Extensions installation <a class="direct-link" href="#extensions-installation"> </a></h4>
+<p>To install the extension, you can use the GUI of Vs Code or the cmdline. For Gui, take a look at the doc <a href="https://code.visualstudio.com/docs/editor/extension-gallery">here</a>.</p>
+<p>For the cmdline :</p>
+<pre><code>code --install-extension alexkrechik.cucumberautocomplete
+code --install-extension ms-vscode.powershell
+</code></pre>
+<blockquote>
+<p>on Linux and macOs, you'll need to add the following in your profile, adapt the path to Vs Code to yours :</p>
+<p><strong>bash</strong>:</p>
+<pre><code>cat &lt;&lt; EOF &gt;&gt; ~/.bash_profile
+# Add Visual Studio Code (code)
+export PATH=&quot;\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin&quot;
+EOF
+</code></pre>
+</blockquote>
+<blockquote>
+<p><strong>zsh</strong>:</p>
+</blockquote>
+<blockquote>
+<pre><code>cat &lt;&lt; EOF &gt;&gt; ~/.zsh_profile
+# Add Visual Studio Code (code)
+export PATH=&quot;\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin&quot;
+EOF
+</code></pre>
+</blockquote>
+<h2 id="create-the-first-tests">Create the first tests <a class="direct-link" href="#create-the-first-tests"> </a></h2>
+<h3 id="pester%2C-gherkin-and-testing">Pester, Gherkin and testing <a class="direct-link" href="#pester%2C-gherkin-and-testing"> </a></h3>
+<p>First of all, you will need some detail on Pester, Gherkin and testing like I think they can be useful and easy as possible.</p>
+<p><a href="https://github.com/pester/Pester">Pester</a>, is a world community framework for testing in Powershell. So, if you know a bit in PowerShell, you won't be lost at all. This module add some new function to do the magic of testing.</p>
+<p><a href="https://cucumber.io/docs/gherkin/reference/">Gherkin</a>, is a syntax for BDD (Behavior-Driven Development) testing. To explain a bit, for me, in our infrastructure testing purpose, is to have some human readable scenario to show to management/customers.</p>
+<p>Fortunately, Pester support the Gherkin syntax using the <code>Invoke-Gherkin</code> cmdlet and do a bit of magic for us.</p>
+<h3 id="let's-play">Let's play <a class="direct-link" href="#let's-play"> </a></h3>
+<p>We need to create our workspace, so do it like that (Using PowerShell's Shell):</p>
+<pre><code>Set-Location ~
+New-Item ./Documents/GherkinTests -type Directory
+code ./Documents/GherkinTests
+</code></pre>
+<p>Create few file :</p>
+<ul>
+<li>etienne_exo.feature &lt;-- This is the Gherkin File</li>
+<li>etienne_exo.steps.ps1 &lt;-- This is our magic</li>
+</ul>
+<p>In the Feature File write the following :</p>
+<pre><code># GherkinTests/etienne_exo.feature
+Feature: Validate Azure Deployment
+
+  Scenario: We should have some subscriptions to work
+    Given we list the subscriptions using powershell
+    Then we should be able to have at least one
+</code></pre>
+<pre><code># GherkinTests/etienne_exo.steps.ps1
+Given &quot;we list the subscriptions using powershell&quot;{
+  Get-AzSubscription | Should -not -throw
+}
+
+Then &quot;we should be able to have at least one&quot; {
+  (Get-AzSubscription).Count | Should -Not -BeNullOrEmpty
+}
+</code></pre>
+<p>Now, let's run that to check if the test are working or not :</p>
+<pre><code>❯ Invoke-Gherkin
+Pester v4.10.0
+Executing all tests in '/home/etienne/Documents/GherkinTests'
+
+Feature: Validate Azure Deployment
+
+  Scenario: We should have some subscriptions to work
+    [+] Given we list the subscriptions using powershell 6.17s
+    [+] Then we should be able to have at least one 5.01s
+Tests completed in 11.39s
+Tests Passed: 2, Failed: 0, Skipped: 0, Pending: 0, Inconclusive: 0
+</code></pre>
+<p>Ok, tests are working, and we have something to show to customers/managment.</p>
+<blockquote>
+<p>Wait, can't we do nothing better ? Are we lazy enough ?<br>
+Of course, not, let's wait for the next blog part.</p>
+</blockquote>
+<h2 id="azure-devops">Azure Devops <a class="direct-link" href="#azure-devops"> </a></h2>
+<h3 id="azure-devops-cli">Azure Devops CLI <a class="direct-link" href="#azure-devops-cli"> </a></h3>
+<p>Get a Personal Access Token here : <code>https://dev.azure.com/&lt;YourOrganisation&gt;/_usersSettings/tokens</code></p>
+<pre><code>az extension add --name azure-devops
+az devops login 
+# paste your PAT
+az login
+# with the sam
+az account set -s &lt;YOUR SUB&gt;
+az devops configure --defaults 'organization=https://dev.azure.com/etiennedeneuve'
+az devops project create --name GherkinTest
+# Store the repo git url to configure the repo locally, you will need a SSH Key for that.
+$repo=$(az repos list --project GherkinTest --query [].sshUrl -o tsv)
+</code></pre>
+<h3 id="configure-the-repo-locally">Configure the repo locally <a class="direct-link" href="#configure-the-repo-locally"> </a></h3>
+<pre><code>cd ~/GherkinTest
+git init
+git remote add origin $repo
+git add .
+git commit -m 'inital commit'
+git push origin master
+</code></pre>
+<h3 id="create-the-pipeline">Create the pipeline <a class="direct-link" href="#create-the-pipeline"> </a></h3>
+<pre><code>az pipelines create --name &quot;GherkinTest&quot;
+</code></pre>
+<p>Answer the questions like :</p>
+<pre><code>This command is in preview. It may be changed/removed in a future release.
+Which template do you want to use for this pipeline?
+ [1] Starter pipeline
+ [2] Android
+ [3] Ant
+ [4] ASP.NET
+ [5] ASP.NET Core
+ [6] .NET Core Function App to Windows on Azure
+ [7] ASP.NET Core (.NET Framework)
+Please enter a choice [Default choice(1)]: Starter pipeline
+
+Do you want to view/edit the template yaml before proceeding?
+Please enter a choice [Default choice(1)]: Continue with generated yaml
+
+Files to be added to your repository (1)
+1) azure-pipelines.yml
+
+How do you want to commit the files to the repository?
+Please enter a choice [Default choice(1)]: Create a new branch for this commit and start a pull request.
+
+Enter new branch name to create: features/cicd
+Checking in file azure-pipelines.yml in the Azure repo c279436a-e2f4-4e01-8f41-a30f660f7515
+Created a Pull Request - https://dev.azure.com/etiennedeneuve/6874897d-6d09-412e-b73b-4b2966c04b64/_apis/git/repositories/c279436a-e2f4-4e01-8f41-a30f660f7515/pullRequests/1
+Successfully created a pipeline with Name: GherkinTest, Id: 25.
+{
+  &quot;agentSpecification&quot;: null,
+  &quot;buildNumber&quot;: &quot;20200214.1&quot;,
+  &quot;buildNumberRevision&quot;: 1,
+  &quot;controller&quot;: null
+}
+</code></pre>
+<h3 id="create-the-service-endpoint-for-azure-rm-subscription">Create the Service Endpoint for Azure RM Subscription <a class="direct-link" href="#create-the-service-endpoint-for-azure-rm-subscription"> </a></h3>
+<p>First we need to create a SPN in Azure AD :</p>
+<pre><code>az ad sp create-for-rbac --name AzureDevops
+Changing &quot;AzureDevops&quot; to a valid URI of &quot;http://AzureDevops&quot;, which is the required format used for service principal names
+Creating a role assignment under the scope of &quot;/subscriptions/1417c648-XXXX&quot;
+ 
+{
+  &quot;appId&quot;: &quot;41176fe8-XXXXX&quot;,
+  &quot;displayName&quot;: &quot;AzureDevops&quot;,
+  &quot;name&quot;: &quot;http://AzureDevops&quot;,
+  &quot;password&quot;: &quot;7eaeb380-XXXXX&quot;,
+  &quot;tenant&quot;: &quot;06329ce4-XXXX&quot;
+}
+</code></pre>
+<p>Take note of the appId, Name, Password and Tenant.</p>
+<p>Now, list your subscriptions :</p>
+<pre><code>az account show
+{
+  &quot;environmentName&quot;: &quot;AzureCloud&quot;,
+  &quot;id&quot;: &quot;1417c648-XXXXX&quot;,
+  &quot;isDefault&quot;: true,
+  &quot;name&quot;: &quot;Microsoft XXXX&quot;,
+  &quot;state&quot;: &quot;Enabled&quot;,
+  &quot;tenantId&quot;: &quot;06329ce4-XXXX&quot;,
+  &quot;user&quot;: {
+    &quot;name&quot;: &quot;etienne@deneuve.xyz&quot;,
+    &quot;type&quot;: &quot;user&quot;
+  }
+}
+</code></pre>
+<p>Take note of the Id, Name, and Tenant.</p>
+<p>And then create the service endpoint in Azure DevOps :</p>
+<pre><code> az devops service-endpoint azurerm create --name 'Azure MVP' `
+&gt;&gt; --azure-rm-tenant-id &quot;YourTenantId&quot; `
+&gt;&gt;     --azure-rm-service-principal-id &quot;AppID&quot; `
+&gt;&gt;     --azure-rm-subscription-id &quot;SubID&quot; `
+&gt;&gt;     --azure-rm-subscription-name &quot;Name of the Sub&quot;
+Azure RM service principal key: &quot;Password&quot;
+Confirm Azure RM service principal key: &quot;Password&quot;
+{
+  &quot;administratorsGroup&quot;: null,
+   &lt; shortened &gt;
+  &quot;type&quot;: &quot;azurerm&quot;,
+  &quot;url&quot;: &quot;https://management.azure.com/&quot;
+}
+</code></pre>
+<h3 id="configure-the-pipeline">Configure the pipeline <a class="direct-link" href="#configure-the-pipeline"> </a></h3>
+<p>Now, checkout to the newly created branch :</p>
+<pre><code># change branch
+git checkout features/cicd
+# get latests info from remote
+git pull
+# open code in the current folder
+code .
+</code></pre>
+<p>Add the following snippet into <code>azure-pipelines.yml</code> :</p>
+<pre><code># ./azure-pipelines.yml
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+steps:
+- task: AzurePowerShell@5
+  inputs:
+    azurePowerShellVersion: LatestVersion
+    azureSubscription: 'Azure MVP'
+    Inline: |
+      Install-Module -Name Pester -Force
+    ScriptType: InlineScript
+    pwsh: true
+    workingDirectory: $(Build.Repository.LocalPath)
+  displayName: 'Install Pester'
+
+- task: AzurePowerShell@5
+  inputs:
+    azurePowerShellVersion: LatestVersion
+    azureSubscription: 'Azure MVP'
+    Inline: |
+      Invoke-Gherkin -OutputFile result.xml -OutputFormat NUnitXml
+    ScriptType: InlineScript
+    pwsh: true
+    workingDirectory: $(Build.Repository.LocalPath)
+  displayName: 'Launch Test'
+
+- task: PublishTestResults@2
+  inputs:
+    buildConfiguration: Azure
+    buildPlatform: Azure
+    publishRunAttachments: true
+    testResultsFiles: result.xml
+    testResultsFormat: NUnit
+    testRunTitle: ValidateAzure
+</code></pre>
+<p>Commit the file :</p>
+<pre><code>git add azure-pipelines.yaml
+git commit -m 'feat: add cicd for tests'
+git push origin features/cicd
+</code></pre>
+<p>Go in your Azure Devops project, select your new pipeline, and go in Tests, you should have something like my public repo :</p>
+<p><a href="https://dev.azure.com/etiennedeneuve/gherkintest/_build/results?buildId=357&amp;view=ms.vss-test-web.build-test-results-tab">Azure Devops</a></p>
+<p><em>Et Voila!</em></p>
+<h2 id="working-with-the-tests">Working with the tests <a class="direct-link" href="#working-with-the-tests"> </a></h2>
+<p>Now, if we want to deploy something in our new infra, we will need to write the tests before deploying the resources themselves.</p>
+<h3 id="adding-some-tests">Adding some tests <a class="direct-link" href="#adding-some-tests"> </a></h3>
+<p>In this scenario, we want to deploy a VM, in our subscription. Let's do a quick list of what we should have after a successful deployment :</p>
+<ul>
+<li>1 Subscription</li>
+<li>1 Resource Group</li>
+<li>1 Virtual Network</li>
+<li>1 Subnet</li>
+<li>1 Network Interface</li>
+<li>1 Disk</li>
+<li>1 VM</li>
+<li>Optionally: 1 Public IP</li>
+</ul>
+<p>With our list, we can now write the test we want, in the feature file:</p>
+<pre><code># GherkinTests/etienne_exo.feature
+Feature: Validate Azure Deployment
+
+  Scenario: Someone start a new vm deployment
+    Given someone start a new vm deployment in the subscription
+    When the deployment is completed we should have 1 resource group
+    Then we should have 1 Virtual Network
+    And 1 Subnet
+    And 1 Network interface
+    And 1 Disk
+    And 1 VM
+    And 1 Public IP
+</code></pre>
+<p>Now, in our steps.ps1 file we will update it:</p>
+<pre><code># GherkinTests/etienne_exo.steps.ps1
+Given &quot;someone start a new vm deployment in the subscription&quot;{
+  Get-AzSubscription | Should -not -throw
+}
+
+When &quot;the deployment is completed we should have 1 resource group&quot; {
+  Get-AzResourceGroup -name RG-GherkinTests | Should -exists
+}
+
+Then &quot;We should have 1 Virtual Network&quot;{
+
+}
+And &quot;1 Subnet&quot;{
+
+}
+And &quot;1 Network interface&quot;{
+
+}
+And &quot;1 Disk&quot;{
+
+}
+And &quot;1 VM&quot;{
+
+}
+And &quot;1 Public IP&quot;{
+
+}
+</code></pre>
+
+      </main>
+      <aside class="aside aside-supplemental d-none d-lg-block col-lg-2 col-xl-2" >
+        <nav class="sticky-top">
+        <div class="">
+                <ol>
+                    
+                    <li><a href="#overview">Overview  </a>
+            		</li>
+
+                    <li><a href="#workstation-preparation">Workstation preparation  </a>
+            
+                <ol>
+                    
+                    <li><a href="#install-powershell-and-modules">Install Powershell and modules  </a>
+            		</li>
+
+                    <li><a href="#visual-studio-code">Visual Studio Code  </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#create-the-first-tests">Create the first tests  </a>
+            
+                <ol>
+                    
+                    <li><a href="#pester%2C-gherkin-and-testing">Pester, Gherkin and testing  </a>
+            		</li>
+
+                    <li><a href="#let's-play">Let's play  </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#azure-devops">Azure Devops  </a>
+            
+                <ol>
+                    
+                    <li><a href="#azure-devops-cli">Azure Devops CLI  </a>
+            		</li>
+
+                    <li><a href="#configure-the-repo-locally">Configure the repo locally  </a>
+            		</li>
+
+                    <li><a href="#create-the-pipeline">Create the pipeline  </a>
+            		</li>
+
+                    <li><a href="#create-the-service-endpoint-for-azure-rm-subscription">Create the Service Endpoint for Azure RM Subscription  </a>
+            		</li>
+
+                    <li><a href="#configure-the-pipeline">Configure the pipeline  </a>
+            		</li>
+                </ol>
+            		</li>
+
+                    <li><a href="#working-with-the-tests">Working with the tests  </a>
+            
+                <ol>
+                    
+                    <li><a href="#adding-some-tests">Adding some tests  </a>
+            		</li>
+                </ol>
+            		</li>
+                </ol>
+            </div>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</div>
+
+    <footer class="site-footer bg-transparent pb-3 pb-md-5">
+      <div class="layout-social container d-flex justify-content-center">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</div>
+    </footer>
+  </body>
+
+</html>

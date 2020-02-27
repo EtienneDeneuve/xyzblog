@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>/courses/2011-11-19-adaptive-websites-for-multiple-screens/</loc>
+    <lastmod>2011-11-19</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2015/12/16/get-nexttrain/</loc>
+    <lastmod>2015-12-16</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016/01/11/side-loading-application-without-sccm-part-1/</loc>
+    <lastmod>2016-01-11</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016/01/11/side-loading-application-without-sccm-part-2/</loc>
+    <lastmod>2016-01-11</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016/01/11/side-loading-application-without-sccm-part-3/</loc>
+    <lastmod>2016-01-11</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2016/01/15/get-ink-level-from-hp-printers-in-powershell/</loc>
+    <lastmod>2016-01-15</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/01/26/utiliser-ansible-et-azure-oui-cest-possible/</loc>
+    <lastmod>2017-01-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/01/26/visual-studio-code-pour-ansible-terraform/</loc>
+    <lastmod>2017-01-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/02/02/agent-oms-sur-linux-dans-azure/</loc>
+    <lastmod>2017-02-02</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/02/02/installation-de-nginx-en-reverse-proxy-avec-reecriture-du-html/</loc>
+    <lastmod>2017-02-02</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/02/03/vorlon-js-un-petit-billet-pour-un-gentil-copain-dev/</loc>
+    <lastmod>2017-02-03</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/03/14/azure-et-le-backup-dun-mac/</loc>
+    <lastmod>2017-03-14</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/04/25/azure-networking-tp-part-1/</loc>
+    <lastmod>2017-04-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/04/27/azure-networking-tp-part-2/</loc>
+    <lastmod>2017-04-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/09/24/project-honolulu-public-preview-mon-retour/</loc>
+    <lastmod>2017-09-24</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/09/25/azure-cloud-shell-pleins-de-nouveautes-et-du-gros/</loc>
+    <lastmod>2017-09-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/09/26/azurepscmdnotfound/</loc>
+    <lastmod>2017-09-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/09/27/frpsug-powershell-saturday-et-contenu-de-la-session-de-lutile-ou-pas/</loc>
+    <lastmod>2017-09-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/09/27/azure-powershell-nettoyer-les-tags/</loc>
+    <lastmod>2017-09-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/09/27/cellinsights-isv-journey-cloud-dans-les-bacs/</loc>
+    <lastmod>2017-09-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/09/29/mon-premier-itcast/</loc>
+    <lastmod>2017-09-29</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/10/01/mvp/</loc>
+    <lastmod>2017-10-01</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/10/01/microsoft-experience-17-infrastructure-code-modelisez-et-provisionnez-vos-services-azure-avec-terraform-et-packer/</loc>
+    <lastmod>2017-10-01</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/10/09/vsts-for-ops-1/</loc>
+    <lastmod>2017-10-09</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/10/13/vsts-for-ops-2/</loc>
+    <lastmod>2017-10-13</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2017/10/25/vsts-for-ops-part-3/</loc>
+    <lastmod>2017-10-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/03/28/os-factory-azure-et-aws/</loc>
+    <lastmod>2018-03-28</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/04/06/terraform-providers-datasource/</loc>
+    <lastmod>2018-04-06</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/06/23/git-pour-ops-par-un-ops/</loc>
+    <lastmod>2018-06-23</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/06/26/setup-vs-code-bash-git/</loc>
+    <lastmod>2018-06-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/06/26/documentation-as-code/</loc>
+    <lastmod>2018-06-26</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/06/28/git-pour-les-ops-par-un-ops-le-retour/</loc>
+    <lastmod>2018-06-28</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/07/02/how-to-manage-dns-terraform/</loc>
+    <lastmod>2018-07-02</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/07/02/az-cli-20-tricks/</loc>
+    <lastmod>2018-07-02</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2018/12/05/adsk-in-a-breeze/</loc>
+    <lastmod>2018-12-05</lastmod>
+  </url>
+  
+  <url>
+    <loc>/2019/01/22/lancement-de-powershell-du-zero/</loc>
+    <lastmod>2019-01-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/2020-02-07-infra-testing-easy-path/</loc>
+    <lastmod>2020-02-07</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/2020-02-17-infra-testing-easy-path-2/</loc>
+    <lastmod>2020-02-17</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/2020-02-25-terraform-azurerm-2/</loc>
+    <lastmod>2020-02-25</lastmod>
+  </url>
+  
+  <url>
+    <loc>/about/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/courses/0/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/js/data.js</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/posts/0/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/rayveal/02_Instructions/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/rayveal/03_Features/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/rayveal/04_Templates/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/rayveal/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/seven/02_Styles/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/seven/03_Scripts/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/seven/04_Site/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/seven/05_Configuration/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/seven/06_Building/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/projects/seven/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/css/</loc>
+    <lastmod>2020-02-27</lastmod>
+  </url>
+</urlset>

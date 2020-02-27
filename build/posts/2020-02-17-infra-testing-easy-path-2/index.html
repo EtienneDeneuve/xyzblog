@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    
+
+    <title>XYZ Blog</title>
+    <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js" integrity="sha384-0pzryjIRos8mFBWMzSSZApWtPl/5++eIfzYmTgBBmXYdhvxPc+XcFEk+zJwDgWbP" crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    
+      <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js"></script>
+    
+
+    <script src="/js/script.js"></script>
+    </head>
+  <body class="position-relative" data-spy="scroll" data-target=".site-nav" data-offset="55">
+    <nav class="site-nav family-sans navbar navbar-expand-md navbar-dark  sidebar sticky-top  py-0">
+  <div class="container-fluid">
+    <button type="button" class="navbar-toggler my-2 my-md-0" data-toggle="collapse" data-target="#myTogglerNav" aria-controls="myTogglerNav" aria-label="Toggle Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-brand text-uppercase">
+      <a class="text-light" href="/"><i class="fas fa-cube mr-2"></i>XYZ Blog</a> 
+    </div>
+
+    <div class="collapse navbar-collapse text-center mt-0" id="myTogglerNav">
+      <div class="navbar-nav ml-auto font-weight-regular text-uppercase">
+        
+        <a class="d-none nav-item nav-link" href="#page-hero">hero target</a>
+        <a class="d-none nav-item nav-link" href="#main-content">nav target</a>
+        
+        <a class="nav-item nav-link font-weight-bold  text-light" href="/"><i class="fas fa-home"></i></a>
+        
+          <a class="nav-item nav-link" href="/courses/0/">courses</a>
+          
+          <a class="nav-item nav-link" href="/posts/0/">posts</a>
+          <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Projects
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+
+
+
+
+          <a class="dropdown-item text-capitalize text-normal" href="/projects/seven/"><i class="fas fa-atom"></i> seven</a><a class="dropdown-item text-capitalize text-normal" href="/projects/rayveal/"><i class="fas fa-atom"></i> rayveal</a></div>
+        </div>
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item text-capitalize" href="/about">About Me</a>
+            <div class="dropdown-divider"></div><a class="dropdown-item text-capitalize" target="_blank" href="https://github.com/etiennedeneuve">
+            <i class="fab fa-github text-secondary mr-2"></i>github
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://linkedin.com/in/etiennedeneuve">
+            <i class="fab fa-linkedin text-secondary mr-2"></i>linkedin
+          </a><a class="dropdown-item text-capitalize" target="_blank" href="https://twitter.com/etiennedinfo">
+            <i class="fab fa-twitter text-secondary mr-2"></i>twitter
+          </a></div>
+        </div>
+      </div>
+      <div class="searchbox pl-2 py-2">
+    <input
+      type="text"
+      v-model="query"
+      class="form-control text-white border m-auto"
+      :class="[isActive ? 'wide' : 'short']"
+      @focus="isActive=true"
+      @blur.prevent="handleBlur"
+      ref="searchinput"
+      style="background: transparent;"
+      aria-describedby="searchinput"
+      autocomplete="off"
+    >
+    <div v-if="query && isActive" class="position-absolute justify-content-center" style="top: 47px;">
+      <div class="card bg-secondary">
+        <ul class="list-group list-group-flush px-0" v-for="(item, index) in queried" :key="index">
+          <li class="list-group-item">
+            <a :href="item.url" class="d-flex text-secondary">
+              <span class="pr-2" v-html="item.icon"></span>
+              <span class="text-body text-left" v-html="item.title"></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+</div>
+    </div>
+  </div>
+</nav>
+
+      
+
+ 
+  <div class="post post-sidebar container-fluid">
+    <div class="row justify-content-xl-center">
+      <aside class="aside aside-main d-none d-md-block col-md-3 col-lg-2">
+        <nav class="sticky-top list-group list-group-flush text-right" id="collapseExample">
+
+          </nav>
+      </aside>
+
+
+      <main class="main col">
+      <h1 id="execute-test-in-azure-devops">Execute test in Azure Devops <a class="direct-link" href="#execute-test-in-azure-devops"> </a></h1>
+<!-- vscode-markdown-toc -->
+<ul>
+<li>
+<ol>
+<li><a href="#AzureDevopsCLI">Azure Devops CLI</a></li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><a href="#Configuretherepolocally">Configure the repo locally</a></li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><a href="#Createthepipeline">Create the pipeline</a></li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li><a href="#CreatetheServiceEndpointforAzureRMSubscription">Create the Service Endpoint for Azure RM Subscription</a></li>
+</ol>
+</li>
+<li>
+<ol start="5">
+<li><a href="#Configurethepipeline">Configure the pipeline</a></li>
+</ol>
+</li>
+</ul>
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+<p>This is the next part of the follwing blog post : <a href="https://etienne.deneuve.xyz/2020/02/07/infra-testing-easy-way/"><br>
+Testing your infra my easy way<br>
+</a></p>
+<p>In this part, you will learn how to :</p>
+<ul>
+<li>[x] Configure Azure Cli Devops</li>
+<li>[x] Create a Azure SPN</li>
+<li>[x] Create an Azure Pipeline using the Az Cli</li>
+<li>[x] Create a service endpoint for Azure Devops using the Az Cli</li>
+<li>[x] Create a Simple Pipeline to execute Gherkin test and publish the result into Azure Devops.</li>
+</ul>
+<h2 id="1.-azure-devops-cli">1. <a name='AzureDevopsCLI'></a>Azure Devops CLI <a class="direct-link" href="#1.-azure-devops-cli"> </a></h2>
+<p>Get a Personal Access Token here : <code>https://dev.azure.com/&lt;YourOrganisation&gt;/_usersSettings/tokens</code></p>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line">az extension <span class="token function">add</span> --name azure-devops</span><br><span class="highlight-line">az devops login </span><br><span class="highlight-line"><span class="token comment"># paste your PAT</span></span><br><span class="highlight-line">az login</span><br><span class="highlight-line"><span class="token comment"># with the sam</span></span><br><span class="highlight-line">az account <span class="token builtin class-name">set</span> -s <span class="token operator">&lt;</span>YOUR SUB<span class="token operator">></span></span><br><span class="highlight-line">az devops configure --defaults <span class="token string">'organization=https://dev.azure.com/etiennedeneuve'</span></span><br><span class="highlight-line">az devops project create --name GherkinTest</span><br><span class="highlight-line"><span class="token comment"># Store the repo git url to configure the repo locally, you will need a SSH Key for that.</span></span><br><span class="highlight-line"><span class="token variable">$repo</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span>az repos list --project GherkinTest --query <span class="token punctuation">[</span><span class="token punctuation">]</span>.sshUrl -o tsv<span class="token variable">)</span></span></span></code></pre>
+<h2 id="2.-configure-the-repo-locally">2. <a name='Configuretherepolocally'></a>Configure the repo locally <a class="direct-link" href="#2.-configure-the-repo-locally"> </a></h2>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line"><span class="token builtin class-name">cd</span> ~/GherkinTest</span><br><span class="highlight-line"><span class="token function">git</span> init</span><br><span class="highlight-line"><span class="token function">git</span> remote <span class="token function">add</span> origin <span class="token variable">$repo</span></span><br><span class="highlight-line"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span></span><br><span class="highlight-line"><span class="token function">git</span> commit -m <span class="token string">'inital commit'</span></span><br><span class="highlight-line"><span class="token function">git</span> push origin master</span></code></pre>
+<h2 id="3.-create-the-pipeline">3. <a name='Createthepipeline'></a>Create the pipeline <a class="direct-link" href="#3.-create-the-pipeline"> </a></h2>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line">az pipelines create --name <span class="token string">"GherkinTest"</span></span></code></pre>
+<p>Answer the questions like :</p>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line">This <span class="token builtin class-name">command</span> is <span class="token keyword">in</span> preview. It may be changed/removed <span class="token keyword">in</span> a future release.</span><br><span class="highlight-line">Which template <span class="token keyword">do</span> you want to use <span class="token keyword">for</span> this pipeline?</span><br><span class="highlight-line"> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> Starter pipeline</span><br><span class="highlight-line"> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> Android</span><br><span class="highlight-line"> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> Ant</span><br><span class="highlight-line"> <span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> ASP.NET</span><br><span class="highlight-line"> <span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> ASP.NET Core</span><br><span class="highlight-line"> <span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> .NET Core Function App to Windows on Azure</span><br><span class="highlight-line"> <span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> ASP.NET Core <span class="token punctuation">(</span>.NET Framework<span class="token punctuation">)</span></span><br><span class="highlight-line">Please enter a choice <span class="token punctuation">[</span>Default choice<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>: Starter pipeline</span><br><span class="highlight-line"></span><br><span class="highlight-line">Do you want to view/edit the template yaml before proceeding?</span><br><span class="highlight-line">Please enter a choice <span class="token punctuation">[</span>Default choice<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>: Continue with generated yaml</span><br><span class="highlight-line"></span><br><span class="highlight-line">Files to be added to your repository <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span></span><br><span class="highlight-line"><span class="token number">1</span><span class="token punctuation">)</span> azure-pipelines.yml</span><br><span class="highlight-line"></span><br><span class="highlight-line">How <span class="token keyword">do</span> you want to commit the files to the repository?</span><br><span class="highlight-line">Please enter a choice <span class="token punctuation">[</span>Default choice<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span>: Create a new branch <span class="token keyword">for</span> this commit and start a pull request.</span><br><span class="highlight-line"></span><br><span class="highlight-line">Enter new branch name to create: features/cicd</span><br><span class="highlight-line">Checking <span class="token keyword">in</span> <span class="token function">file</span> azure-pipelines.yml <span class="token keyword">in</span> the Azure repo c279436a-e2f4-4e01-8f41-a30f660f7515</span><br><span class="highlight-line">Created a Pull Request - https://dev.azure.com/etiennedeneuve/6874897d-6d09-412e-b73b-4b2966c04b64/_apis/git/repositories/c279436a-e2f4-4e01-8f41-a30f660f7515/pullRequests/1</span><br><span class="highlight-line">Successfully created a pipeline with Name: GherkinTest, Id: <span class="token number">25</span>.</span><br><span class="highlight-line"><span class="token punctuation">{</span></span><br><span class="highlight-line">  <span class="token string">"agentSpecification"</span><span class="token builtin class-name">:</span> null,</span><br><span class="highlight-line">  <span class="token string">"buildNumber"</span><span class="token builtin class-name">:</span> <span class="token string">"20200214.1"</span>,</span><br><span class="highlight-line">  <span class="token string">"buildNumberRevision"</span><span class="token builtin class-name">:</span> <span class="token number">1</span>,</span><br><span class="highlight-line">  <span class="token string">"controller"</span><span class="token builtin class-name">:</span> null</span><br><span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<h2 id="4.-create-the-service-endpoint-for-azure-rm-subscription">4. <a name='CreatetheServiceEndpointforAzureRMSubscription'></a>Create the Service Endpoint for Azure RM Subscription <a class="direct-link" href="#4.-create-the-service-endpoint-for-azure-rm-subscription"> </a></h2>
+<p>First we need to create a SPN in Azure AD :</p>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line">az ad sp create-for-rbac --name AzureDevops</span><br><span class="highlight-line">Changing <span class="token string">"AzureDevops"</span> to a valid URI of <span class="token string">"http://AzureDevops"</span>, <span class="token function">which</span> is the required <span class="token function">format</span> used <span class="token keyword">for</span> <span class="token function">service</span> principal names</span><br><span class="highlight-line">Creating a role assignment under the scope of <span class="token string">"/subscriptions/1417c648-XXXX"</span></span><br><span class="highlight-line"> </span><br><span class="highlight-line"><span class="token punctuation">{</span></span><br><span class="highlight-line">  <span class="token string">"appId"</span><span class="token builtin class-name">:</span> <span class="token string">"41176fe8-XXXXX"</span>,</span><br><span class="highlight-line">  <span class="token string">"displayName"</span><span class="token builtin class-name">:</span> <span class="token string">"AzureDevops"</span>,</span><br><span class="highlight-line">  <span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"http://AzureDevops"</span>,</span><br><span class="highlight-line">  <span class="token string">"password"</span><span class="token builtin class-name">:</span> <span class="token string">"7eaeb380-XXXXX"</span>,</span><br><span class="highlight-line">  <span class="token string">"tenant"</span><span class="token builtin class-name">:</span> <span class="token string">"06329ce4-XXXX"</span></span><br><span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Take note of the appId, Name, Password and Tenant.</p>
+<p>Now, list your subscriptions :</p>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line">az account show</span><br><span class="highlight-line"><span class="token punctuation">{</span></span><br><span class="highlight-line">  <span class="token string">"environmentName"</span><span class="token builtin class-name">:</span> <span class="token string">"AzureCloud"</span>,</span><br><span class="highlight-line">  <span class="token string">"id"</span><span class="token builtin class-name">:</span> <span class="token string">"1417c648-XXXXX"</span>,</span><br><span class="highlight-line">  <span class="token string">"isDefault"</span><span class="token builtin class-name">:</span> true,</span><br><span class="highlight-line">  <span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"Microsoft XXXX"</span>,</span><br><span class="highlight-line">  <span class="token string">"state"</span><span class="token builtin class-name">:</span> <span class="token string">"Enabled"</span>,</span><br><span class="highlight-line">  <span class="token string">"tenantId"</span><span class="token builtin class-name">:</span> <span class="token string">"06329ce4-XXXX"</span>,</span><br><span class="highlight-line">  <span class="token string">"user"</span><span class="token builtin class-name">:</span> <span class="token punctuation">{</span></span><br><span class="highlight-line">    <span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"etienne@deneuve.xyz"</span>,</span><br><span class="highlight-line">    <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"user"</span></span><br><span class="highlight-line">  <span class="token punctuation">}</span></span><br><span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<p>Take note of the Id, Name, and Tenant.</p>
+<p>And then create the service endpoint in Azure DevOps :</p>
+<pre class="language-shell"><code class="language-shell"> az devops service-endpoint azurerm create --name <span class="token string">'Azure MVP'</span> <span class="token variable"><span class="token variable">`</span><br><span class="token operator">>></span> --azure-rm-tenant-id <span class="token string">"YourTenantId"</span> <span class="token variable">`</span></span><br><span class="token operator">>></span>     --azure-rm-service-principal-id <span class="token string">"AppID"</span> <span class="token variable"><span class="token variable">`</span><br><span class="token operator">>></span>     --azure-rm-subscription-id <span class="token string">"SubID"</span> <span class="token variable">`</span></span><br><span class="highlight-line"><span class="token operator">>></span>     --azure-rm-subscription-name <span class="token string">"Name of the Sub"</span></span><br><span class="highlight-line">Azure RM <span class="token function">service</span> principal key: <span class="token string">"Password"</span></span><br><span class="highlight-line">Confirm Azure RM <span class="token function">service</span> principal key: <span class="token string">"Password"</span></span><br><span class="highlight-line"><span class="token punctuation">{</span></span><br><span class="highlight-line">  <span class="token string">"administratorsGroup"</span><span class="token builtin class-name">:</span> null,</span><br><span class="highlight-line">   <span class="token operator">&lt;</span> shortened <span class="token operator">></span></span><br><span class="highlight-line">  <span class="token string">"type"</span><span class="token builtin class-name">:</span> <span class="token string">"azurerm"</span>,</span><br><span class="highlight-line">  <span class="token string">"url"</span><span class="token builtin class-name">:</span> <span class="token string">"https://management.azure.com/"</span></span><br><span class="highlight-line"><span class="token punctuation">}</span></span></code></pre>
+<h2 id="5.-configure-the-pipeline">5. <a name='Configurethepipeline'></a>Configure the pipeline <a class="direct-link" href="#5.-configure-the-pipeline"> </a></h2>
+<p>Now, checkout to the newly created branch :</p>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line"><span class="token comment"># change branch</span></span><br><span class="highlight-line"><span class="token function">git</span> checkout features/cicd</span><br><span class="highlight-line"><span class="token comment"># get latests info from remote</span></span><br><span class="highlight-line"><span class="token function">git</span> pull</span><br><span class="highlight-line"><span class="token comment"># open code in the current folder</span></span><br><span class="highlight-line">code <span class="token builtin class-name">.</span></span></code></pre>
+<p>Add the following snippet into <code>azure-pipelines.yml</code> :</p>
+<pre class="language-yaml"><code class="language-yaml"><span class="highlight-line"><span class="token comment"># ./azure-pipelines.yml</span></span><br><span class="highlight-line"><span class="token comment"># Starter pipeline</span></span><br><span class="highlight-line"><span class="token comment"># Start with a minimal pipeline that you can customize to build and deploy your code.</span></span><br><span class="highlight-line"><span class="token comment"># Add steps that build, run tests, deploy, and more:</span></span><br><span class="highlight-line"><span class="token comment"># https://aka.ms/yaml</span></span><br><span class="highlight-line"></span><br><span class="highlight-line"><span class="token key atrule">trigger</span><span class="token punctuation">:</span></span><br><span class="highlight-line"><span class="token punctuation">-</span> master</span><br><span class="highlight-line"></span><br><span class="highlight-line"><span class="token key atrule">pool</span><span class="token punctuation">:</span></span><br><span class="highlight-line">  <span class="token key atrule">vmImage</span><span class="token punctuation">:</span> <span class="token string">'windows-latest'</span></span><br><span class="highlight-line"></span><br><span class="highlight-line"><span class="token key atrule">steps</span><span class="token punctuation">:</span></span><br><span class="highlight-line"><span class="token punctuation">-</span> <span class="token key atrule">task</span><span class="token punctuation">:</span> AzurePowerShell@5</span><br><span class="highlight-line">  <span class="token key atrule">inputs</span><span class="token punctuation">:</span></span><br><span class="highlight-line">    <span class="token key atrule">azurePowerShellVersion</span><span class="token punctuation">:</span> LatestVersion</span><br><span class="highlight-line">    <span class="token key atrule">azureSubscription</span><span class="token punctuation">:</span> <span class="token string">'Azure MVP'</span></span><br>    <span class="token key atrule">Inline</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string"><br>      Install-Module -Name Pester -Force</span><br><span class="highlight-line">    <span class="token key atrule">ScriptType</span><span class="token punctuation">:</span> InlineScript</span><br><span class="highlight-line">    <span class="token key atrule">pwsh</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></span><br><span class="highlight-line">    <span class="token key atrule">workingDirectory</span><span class="token punctuation">:</span> $(Build.Repository.LocalPath)</span><br><span class="highlight-line">  <span class="token key atrule">displayName</span><span class="token punctuation">:</span> <span class="token string">'Install Pester'</span></span><br><span class="highlight-line"></span><br><span class="highlight-line"><span class="token punctuation">-</span> <span class="token key atrule">task</span><span class="token punctuation">:</span> AzurePowerShell@5</span><br><span class="highlight-line">  <span class="token key atrule">inputs</span><span class="token punctuation">:</span></span><br><span class="highlight-line">    <span class="token key atrule">azurePowerShellVersion</span><span class="token punctuation">:</span> LatestVersion</span><br><span class="highlight-line">    <span class="token key atrule">azureSubscription</span><span class="token punctuation">:</span> <span class="token string">'Azure MVP'</span></span><br>    <span class="token key atrule">Inline</span><span class="token punctuation">:</span> <span class="token punctuation">|</span><span class="token scalar string"><br>      Invoke-Gherkin -OutputFile result.xml -OutputFormat NUnitXml</span><br><span class="highlight-line">    <span class="token key atrule">ScriptType</span><span class="token punctuation">:</span> InlineScript</span><br><span class="highlight-line">    <span class="token key atrule">pwsh</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></span><br><span class="highlight-line">    <span class="token key atrule">workingDirectory</span><span class="token punctuation">:</span> $(Build.Repository.LocalPath)</span><br><span class="highlight-line">  <span class="token key atrule">displayName</span><span class="token punctuation">:</span> <span class="token string">'Launch Test'</span></span><br><span class="highlight-line"></span><br><span class="highlight-line"><span class="token punctuation">-</span> <span class="token key atrule">task</span><span class="token punctuation">:</span> PublishTestResults@2</span><br><span class="highlight-line">  <span class="token key atrule">inputs</span><span class="token punctuation">:</span></span><br><span class="highlight-line">    <span class="token key atrule">buildConfiguration</span><span class="token punctuation">:</span> Azure</span><br><span class="highlight-line">    <span class="token key atrule">buildPlatform</span><span class="token punctuation">:</span> Azure</span><br><span class="highlight-line">    <span class="token key atrule">publishRunAttachments</span><span class="token punctuation">:</span> <span class="token boolean important">true</span></span><br><span class="highlight-line">    <span class="token key atrule">testResultsFiles</span><span class="token punctuation">:</span> result.xml</span><br><span class="highlight-line">    <span class="token key atrule">testResultsFormat</span><span class="token punctuation">:</span> NUnit</span><br><span class="highlight-line">    <span class="token key atrule">testRunTitle</span><span class="token punctuation">:</span> ValidateAzure</span></code></pre>
+<p>Commit the file :</p>
+<pre class="language-shell"><code class="language-shell"><span class="highlight-line"><span class="token function">git</span> <span class="token function">add</span> azure-pipelines.yaml</span><br><span class="highlight-line"><span class="token function">git</span> commit -m <span class="token string">'feat: add cicd for tests'</span></span><br><span class="highlight-line"><span class="token function">git</span> push origin features/cicd</span></code></pre>
+<p>Go in your Azure Devops project, select your new pipeline, and go in Tests, you should have something like my public repo :</p>
+<p><a href="https://dev.azure.com/etiennedeneuve/gherkintest/_build/results?buildId=357&amp;view=ms.vss-test-web.build-test-results-tab">Azure Devops</a></p>
+<p><em>Et Voila!</em></p>
+
+      </main>
+      <aside class="aside aside-supplemental d-none d-lg-block col-lg-2 col-xl-2" >
+        <nav class="sticky-top">
+        <div class="">
+                <ol>
+                    
+                    <li><a href="#1.-azure-devops-cli">1. Azure Devops CLI  </a>
+            		</li>
+
+                    <li><a href="#2.-configure-the-repo-locally">2. Configure the repo locally  </a>
+            		</li>
+
+                    <li><a href="#3.-create-the-pipeline">3. Create the pipeline  </a>
+            		</li>
+
+                    <li><a href="#4.-create-the-service-endpoint-for-azure-rm-subscription">4. Create the Service Endpoint for Azure RM Subscription  </a>
+            		</li>
+
+                    <li><a href="#5.-configure-the-pipeline">5. Configure the pipeline  </a>
+            		</li>
+                </ol>
+            </div>
+        </nav>
+      </aside>
+    </div>
+  </div>
+</div>
+
+    <footer class="site-footer bg-transparent pb-3 pb-md-5">
+      <div class="layout-social container d-flex justify-content-center">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</div>
+    </footer>
+  </body>
+
+</html>
