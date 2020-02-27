@@ -11,11 +11,11 @@ jobs:
       - name: Build
         uses: TartanLlama/actions-eleventy@v1.1
         with:
-          args: --output _dist
+          args: --output build
           install_dependencies: true
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v1.1.0
         env:
-          PUBLISH_DIR: _dist
-          PUBLISH_BRANCH: gh-pages
+          PUBLISH_DIR: build
+          PUBLISH_BRANCH: master
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
