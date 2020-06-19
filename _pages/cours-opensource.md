@@ -7,7 +7,7 @@ layout: page
 permalink: >
   https://etienne.deneuve.xyz/cours-opensource/
 published: true
-post_date: 2017-09-24 19:54:59
+date: 2017-09-24 19:54:59
 ---
 Bonjour,
 
